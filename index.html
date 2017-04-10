@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <!--      <base href="/room/">-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <script>
+        $( document ).ready(function() {
+
+            $(document).on('keypress', function(e) {
+                if (e.which == 13) {
+                    $('#loginBtn').click();
+                }
+            });
+
+            $('#loginBtn').on('click', function (){
+
+////                    Cookies.set('magicInfoUserId', '', {expires: 365});
+//
+//                var loginId = '';
+//                var loginPass = '';
+//                if ($('#loginId').val() != null && $('#loginId').val() != '') {
+//                    loginId = $('#loginId').val();
+//                } else {
+//                    $('#loginErrorWrap').empty().append("<spring:message code='message.user.enter_user_id'/>");
+//                    return false;
+//                }
+//
+//                if ($('#loginPass').val() != null && $('#loginPass').val() != '') {
+//                    loginPass = $('#loginPass').val();
+//                } else {
+//                    $('#loginErrorWrap').empty().append("<spring:message code='message.user.enter_pass'/>");
+//                    return false;
+//                }
+//
+//                var $form = $('<form></form>');
+//                $form.attr('action', 'http://34.198.20.245:7001/MagicInfo2/j_spring_security_check');
+//                $form.attr('method', 'post');
+//                $form.appendTo('body');
+//
+//                var loginIdval = $('<input type="hidden" value="'+loginId+'" name="j_username">');
+//                var passwordval = $('<input type="hidden" value="'+loginPass+'" name="j_password">');
+//                var csrf_token = $('meta[name="csrf-token"]').attr('content');
+////                var token = $('<input type="hidden" value="a20c0229-7126-4d08-af06-98fee0cbba98" name="_csrf">');
+////                var token = $('<input type="hidden" value="'+csrf_token+'" name="_csrf">');
+//                var token = $('<input type="hidden" value="${_csrf.token}" name="${_csrf.parameterName}">');
+//                $form.append(loginIdval).append(passwordval).append(token);
+//                $form.submit();
+
+//                $.post('http://34.198.20.245:7001/herotech/j_spring_security_check',{j_username:'admin',j_password:'NBjMiXhl3tddjyD14Iwx'})
+//                    .done(function (res) {
+//                        console.log('res', res);
+//                    })
+//                    .fail(function (err) {
+//                        console.log('err', err);
+//                    });
+
+//                var xhr = new XMLHttpRequest();
+//                xhr.withCredentials = true;
+//
+//                xhr.open('GET', 'http://34.198.20.245:7001/herotech/openapi/getAuthToken', true);
+//
+//                xhr.onload = function() {
+//                    alert( this.responseText );
+//                }
+//
+//                xhr.onerror = function() {
+//                    alert( 'Ошибка ' + this.status );
+//                }
+//
+//                xhr.send();
+
+//                $.get('http://34.198.20.245:7001/herotech/open')
+//                $.get('http://34.198.20.245:7001/herotech/openapi/getAuthToken')
+//                    .done(function (res) {
+//                        console.log('res', res);
+//                    })
+//                    .fail(function (err) {
+//                        console.log('err', err);
+//                    })
+
+//                $.get('http://34.198.20.245:7001/MagicInfo/openapi/open?service=CommonContentService.getCategoryList ')
+//                    .done(function (res) { console.log('res', res)})
+//                    .fail(function (err) { console.log('err', err)});
+
+                $.post('http://34.198.20.245:7001/MagicInfo/openapi/open',{
+                        service:'CommonContentService.getCategoryList',
+                        token:'JGE5OGFhNmI3Y2NkNTc3ZTYkdA==',
+                        _csrf:'067dc5fe-c08e-4ed5-baf8-af58978c5e95'})
+                    .done(function (res) { console.log('res', res)})
+                    .fail(function (err) { console.log('err', err)});
+
+            });
+
+        });
+    </script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="form-signin">
+            <h3 class="form-signin-heading">Please sign in</h3>
+            <label for="loginId" class="sr-only">User name</label>
+            <input id="loginId" name="j_username" class="form-control" placeholder="Username" required autofocus>
+            <label for="loginPass" class="sr-only">Password</label>
+            <input id="loginPass" name="j_password" type="password" class="form-control" placeholder="Password" required>
+            <div class="text-sm-center">
+                <label>
+                </label>
+            </div>
+            <button id="loginBtn" class="btn btn-lg btn-primary btn-block">Sign in</button>
+        </div>
+    </div> <!-- /container -->
+
+</body>
+</html>

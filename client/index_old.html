@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DigitalMagic</title>
+    <link rel="stylesheet" href="libs/bootstrap.min.css">
+    <link rel="stylesheet" href="libs/font-awesome.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="/libs/jquery-3.1.0.min.js"></script>
+    <script src="/libs/bootstrap.min.js"></script>
+</head>
+<body>
+    <div id="content">
+        <div class="row shift100"></div>
+        <div class="row">
+            <div class="col-md-1 col-lg-offset-3" id="device1">
+                <!--<i class="fa fa-television fa-4" aria-hidden="true"></i>-->
+                <div class="thumbnailview_wrap">
+                    <div class="thumbview_wrapper" id="mac-38-01-95-56-21-0a" device_id="38-01-95-56-21-0a" power="false">
+                        <div class="thumbview_box device_thumb" device_id="38-01-95-56-21-0a">
+                            <div class="dev_thumb_img_wrapper">
+                                <div id="img-38-01-95-56-21-0a" class="dev_img_thumb"></div>
+                            </div>
+                        </div>
+                        <div style="cursor:pointer;" onclick="getDeviceView('38-01-95-56-21-0a')">
+                            <div class="status_wrap clearfix bg_babcbc" power="false"><span id="name-38-01-95-56-21-0a" class="dev_name "></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 col-lg-offset-2" id="device2">
+                <!--<i class="fa fa-television fa-4" aria-hidden="true"></i>-->
+                <div class="thumbnailview_wrap">
+                    <div class="thumbview_wrapper" id="mac-38-01-95-56-21-2a" device_id="38-01-95-56-21-2a"  power="true">
+                        <div class="thumbview_box device_thumb" device_id="38-01-95-56-21-2a">
+                            <div class="dev_thumb_img_wrapper">
+                                <div id="img-38-01-95-56-21-2a" class="dev_img_thumb"></div>
+                            </div>
+                        </div>
+                        <div style="cursor:pointer;" onclick="getDeviceView('38-01-95-56-21-2a')">
+                            <div class="status_wrap clearfix bg_babcbc" power="false"><span id="name-38-01-95-56-21-2a" class="dev_name "></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row shift100"></div>
+        <div class="row">
+            <div class="col-md-1 col-lg-offset-4" id="device3">
+                <!--<i class="fa fa-television fa-4" aria-hidden="true"></i>-->
+                <div class="thumbnailview_wrap">
+                    <div class="thumbview_wrapper" id="mac-f8-3f-51-37-9c-93" device_id="f8-3f-51-37-9c-93"  power="false">
+                        <div class="thumbview_box device_thumb" device_id="f8-3f-51-37-9c-93">
+                            <div class="dev_thumb_img_wrapper">
+                                <div id="img-f8-3f-51-37-9c-93" class="dev_img_thumb"></div>
+                            </div>
+                        </div>
+                        <div style="cursor:pointer;" onclick="getDeviceView('f8-3f-51-37-9c-93')">
+                            <div class="status_wrap clearfix bg_babcbc" power="true"><span id="name-f8-3f-51-37-9c-93" class="dev_name "></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="col-md-12" id="playlists">-->
+                <!--<h3>PLAYLISTS</h3>-->
+                <!--<hr>-->
+                <!--<div id="playlist0">-->
+                    <!--&lt;!&ndash;<img style="vertical-align:middle;" src="http://34.196.180.158:7001/MagicInfo/servlet/ContentThumbnail?thumb_id=918840FE-61E6-4A3C-BD84-BE1A1A80612D&amp;thumb_filename=100.jpg.png_MEDIUM.PNG&amp;width=100&amp;height=56">&ndash;&gt;-->
+                    <!--<img id="playlist_thumb0" style="vertical-align:middle;">-->
+                    <!--<div id="playlist_name0"></div>-->
+                <!--</div>-->
+                <!--<hr>-->
+                <!--<hr>-->
+                <!--<div id="playlist1">-->
+                    <!--<img id="playlist_thumb1" style="vertical-align:middle;">-->
+                    <!--<div id="playlist_name1"></div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <row>
+            <div class="col-md-1 col-lg-offset-5" id="device4">
+                <!--<i class="fa fa-television fa-4" aria-hidden="true"></i>-->
+                <div class="thumbnailview_wrap" id="deviceTabTable">
+                    <div class="thumbview_wrapper" id="mac-5c-49-7d-c9-2e-e5" device_id="5c-49-7d-c9-2e-e5"  power="true">
+                        <div class="thumbview_box device_thumb" device_id="5c-49-7d-c9-2e-e5">
+                            <div class="dev_thumb_img_wrapper">
+                                <div id="img-5c-49-7d-c9-2e-e5" class="dev_img_thumb"></div>
+                            </div>
+                        </div>
+                        <div style="cursor:pointer;" onclick="getDeviceView('5c-49-7d-c9-2e-e5')">
+                        <!--<div style="cursor:pointer;" onclick="getDeviceView('5c-49-7d-c9-2e-e5')">-->
+                            <!--<div class="status_wrap clearfix bg_babcbc" power="true" data-toggle="modal" data-target="#Modal"><span id="name-5c-49-7d-c9-2e-e5" class="dev_name "></span></div>-->
+                            <!--<div class="status_wrap clearfix bg_babcbc" power="true" data-toggle="modal" data-target="#Modal"><span id="name-5c-49-7d-c9-2e-e5" class="dev_name "></span></div>-->
+                            <div class="status_wrap clearfix bg_babcbc" power="true" data-toggle="tooltip" data-placement="right"><span id="name-5c-49-7d-c9-2e-e5" class="dev_name "></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </row>
+    </div>
+    <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>-->
+
+    <!-- Modal -->
+    <div id="Modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Device</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Device ID:<span id="m_device_id-5c-49-7d-c9-2e-e5"></span></p>
+                    <p>MAC address:<span id="m_mac_address-5c-49-7d-c9-2e-e5"></span></p>
+                    <p>IP address:<span id="m_ip_address-5c-49-7d-c9-2e-e5"></span></p>
+                    <p>Location<span id="m_location-5c-49-7d-c9-2e-e5"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <style>
+        #MyBackround,#MyContainer{
+            position: absolute;
+            left: 0;
+            top:0;
+        }
+    </style>
+
+    <div id="MyBackround">
+        <div id="MyContainer">
+
+        </div>
+    </div>
+
+    <script src="myDevice.js"></script>
+    <script>
+        var getPlaylistListByUser = 'getPlaylistListByUser';
+        var getContentListOfPlaylist = 'getContentListOfPlaylist';
+        var getAllDevices = 'getAllDevices';
+        var getDeviceListWithDeviceType = 'getDeviceListWithDeviceType';
+        var getDevicePlayingContent = 'getDevicePlayingContent';
+        var src_thumb1 = 'http://34.196.180.158:7001/MagicInfo/servlet/ContentThumbnail?thumb_id=';
+        var src_thumb2 = '&thumb_filename=';
+        var src_thumb3 = '_MEDIUM.PNG&width=100&height=56';
+        var devices_arr, deviceConnectionEntity, playlist_arr;
+        var positions = [
+            {
+                left: '200px',
+                top: '80px'
+            },
+            {
+                left: '860px',
+                top: '80px'
+            },
+            {
+                left: '310px',
+                top: '310px'
+            },
+            {
+                left: '750px',
+                top: '420px'
+            }
+        ];
+
+        $(document).ready(function () {
+
+            $.get(getAllDevices).done(function (res) {
+                devices_arr = res;
+//                console.log('getAllDevices ', res);
+                var container = $('#MyContainer');
+                res.forEach(function (item, i, arr) {
+                    var View = $('<div>').attr('id', item.device_id[0]).addClass('device thumbview_wrapper').css(positions[i]);
+                    var ViewThumb1 = $('<div>').addClass('thumbview_box device_thumb');
+                    var ViewThumb2 = $('<div>').addClass('dev_thumb_img_wrapper');
+                    var ViewThumb3 = $('<div>').attr('id', 'img--'+item.device_id[0]).addClass('dev_img_thumb');
+
+                    var ViewName1 = $('<div>').css('cursor','pointer');
+                    var ViewName2 = $('<div>').addClass('status_wrap clearfix bg_babcbc');
+                    var ViewName3 = $('<span>').attr('id', 'name--'+item.device_id[0]);
+
+                    var Device = new magic.MyDevice(View,item);
+                    View.appendTo(container);
+                    ViewThumb3.appendTo(ViewThumb2.appendTo(ViewThumb1));
+                    ViewThumb1.appendTo(View);
+                    ViewName3.appendTo(ViewName2.appendTo(ViewName1));
+                    ViewName1.appendTo(View);
+
+
+                    var img_url = Device.getDeviceThumbnailURL(item.device_id[0]);
+
+//                    var DC = Device.getDeviceConnection(item.device_id[0]);
+//                    if( Device.getDeviceConnection(item.device_id[0]) === 'true'){
+//                        console.log('dddddddddddd');
+//                        new magic.MyPlaylist().getPlaylist(item.device_id[0]);
+//                    }
+                });
+
+                var deviceIds = res.map(function (item, i, arr) {
+                    return item.device_id[0];
+                });
+
+                $.get('getDeviceConnectionList' + '?deviceIds=' + deviceIds.join(',')).done(function (res) {
+                    var deviceConnectionEntity = res;
+                    console.log('getDeviceConnectionList', res);
+
+                    deviceConnectionEntity.forEach(function (item, i, arr) {
+                        $("#name-" + item.deviceId[0]).text(devices_arr[i].device_name[0]);
+                        $("#name--" + item.deviceId[0]).text(devices_arr[i].device_name[0]);
+                        if (item.connection[0] == 'true') {
+                            $("#name-" + item.deviceId[0]).parent('div').removeClass('bg_babcbc').addClass('bg_e6b280');
+                            $("#name--" + item.deviceId[0]).parent('div').removeClass('bg_babcbc').addClass('bg_e6b280');
+                            //                            $("#img-"+item.deviceId[0]).css({"background": "url("+devices_arr[i]+")", "background-size": "100% 100%"});
+                            $.get('getDeviceThumbnailURL' + '?device_id=' + item.deviceId[0]).done(function (res2) {
+                                $("#img-" + item.deviceId[0]).css({
+                                    "background-image": "url(" + "'" + res2 + "'" + ")",
+                                    "background-size": "auto 100%",
+                                });
+                                $("#img--" + item.deviceId[0]).css({
+                                    "background-image": "url(" + "'" + res2 + "'" + ")",
+                                    "background-size": "auto 100%",
+                                });
+                            }).fail(function (err) {
+                                console.log('error', err);
+                            });
+                        }
+                    })
+                }).fail(function (err) {
+                    console.error('error ', err);
+                });
+
+//                new magic.getData(devices_arr, deviceIds);
+
+            }).fail(function (error) {
+                console.log('error', error);
+            });
+
+            function getDeviceView(divice_id) {
+                $("#Modal").modal('show');
+            }
+
+//            $("#Modal").click(function(){
+//                $("#Modal").modal('show');
+//            });
+
+//            $(".hide-modal").click(function(){
+//                $("#myModal").modal('hide');
+//            });
+
+
+//            $.get(getAllDevices).done(function (res) {
+//                res.forEach(function (item, i, arr) {
+//                    $.get(getDevicePlayingContent+'?deviceId='+item.device_id[0]).done(function (res2) {
+//                        $("#devices").append('<img id=\"device'+i+'\"><span id=\"deviceN'+i+'\"></span>')
+//                        $("#device"+i).attr("src", src_thumb1 + res2.contentLists[0].ContentList[0].thumbnailFileId[0] +
+//                        src_thumb2 + res2.contentLists[0].ContentList[0].thumbnailFileName[0]+
+//                        src_thumb3);
+//                        $("#deviceN"+i).text(item.device_name[0]);
+//                    }).fail(function () {
+//                        console.log('error', error);
+//                    });
+//                });
+//                console.log('All Devices', res);
+//            }).fail(function (error) {
+//                console.log('error', error);
+//            });
+
+//            $.get(getDeviceListWithDeviceType).done(function (res) {
+//                res.forEach(function (item, i, arr) {
+//                    $.get(getDevicePlayingContent+'?deviceId='+item.device_id[0]).done(function (res2) {
+//                        $("#devices").append('<img id=\"device'+i+'\"><span id=\"deviceN'+i+'\"></span>')
+//                        $("#device"+i).attr("src", src_thumb1 + res2.contentLists[0].ContentList[0].thumbnailFileId[0] +
+//                        src_thumb2 + res2.contentLists[0].ContentList[0].thumbnailFileName[0]+
+//                        src_thumb3);
+//                        $("#deviceN"+i).text(item.device_name[0]);
+//                    }).fail(function () {
+//                        console.log('error', error);
+//                    });
+//                });
+//            }).fail(function (error) {
+//                console.log('error', error);
+//            });
+//            $.get(getPlaylistListByUser).done(function (res) {
+//                res.forEach(function (item, i, arr) {
+//                    $("#playlist_thumb"+i).attr("src", src_thumb1 + item.mainContent[0].thumb_file_id[0]+
+//                        src_thumb2 + item.mainContent[0].thumb_file_name[0]+
+//                        src_thumb3);
+//                    $("#playlist_name"+i).text(item.playlist_name[0]);
+//
+//                    $.get(getContentListOfPlaylist+'?playlistId='+item.playlist_id[0]+'&versionId='+item.version_id[0]).done(function (res2) {
+//                        res2.forEach(function (item_Content, j, arr_c) {
+////                            $("#playlist"+i).append('<div id=\"content' +j+'\"></div>');
+//                            $("#playlist"+i).append('<img id=\"content' +j+'\"><span id=\"Scontent' +j+'\"></span>');
+//                            $("#content"+j).attr("src", src_thumb1 + item_Content.thumb_file_id[0]+
+//                                src_thumb2 + item_Content.thumb_file_name[0]+
+//                                src_thumb3);
+////                            $("#Scontent"+j).text(item_Content.content_name[0]);
+//                        });
+////                        console.log('res', res);
+//                    }).fail(function () {
+//                        console.log('error', error);
+//                    });
+//                });
+////                $("#Playlist_thumb1").attr("src", src_thumb1 + res[0].mainContent[0].thumb_file_id[0]+
+////                                            src_thumb2 + res[0].mainContent[0].thumb_file_name[0]+
+////                                            src_thumb3);
+////                $("#playlist_name0").text(res[1].playlist_name[0]);
+////                $("#playlist_name1").text(res[0].playlist_name[0]);
+////                console.log('res', res);
+//            }).fail(function (error) {
+//                console.log('error', error);
+//            });
+        });
+    </script>
+</body>
+</html>

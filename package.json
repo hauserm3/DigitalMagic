@@ -1,0 +1,22 @@
+{
+  "name": "DigitalMagic",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@types/jquery": "^2.0.41",
+    "body-parser": "^1.15.1",
+    "cookie-parser": "^1.4.2",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "fs-extra": "^0.30.0",
+    "http-proxy": "^1.14.0",
+    "http-server": "^0.9.0",
+    "request": "^2.73.0",
+    "xml2js": "^0.4.17"
+  },
+  "devDependencies": {
+    "tslint": "^5.0.0",
+    "typescript": "^2.2.1"
+  }
+}

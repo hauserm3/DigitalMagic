@@ -1,0 +1,206 @@
+
+body {
+    background-image: url("img/bg.png");
+    /*background-repeat: no-repeat;*/
+    /*background-position: left top;*/
+}
+#MyBackround {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+#MyContainer{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    margin: auto;
+    width: 1600px;
+    /*width: 1250px;*/
+}
+
+.thumbview_wrapper{
+    width:150px;
+}
+
+.thumbview_wrapper .thumbview_box.device_thumb {
+    display: table-cell;
+    width:150px;
+    height:84px;
+}
+
+.thumbview_wrapper .thumbview_box.device_thumb {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.thumbview_wrapper .thumbview_box {
+    /*width: 100px;*/
+    /*height: 100px;*/
+    position: relative;
+}
+
+.thumbview_wrapper .thumbview_box.device_thumb > div.dev_thumb_img_wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: #DDDEDE;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+}
+
+.thumbview_wrapper .thumbview_box.device_thumb > div.dev_thumb_img_wrapper > div {
+    width: 100%;
+    height: 100%;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    border-radius: 5px 5px 0 0;
+}
+
+.dev_img_thumb{
+    background-image:url('/img/thumb_img_power.png');
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size:contain;
+    /*background-size:100% 100%;*/
+    display:inline-block;
+}
+
+.active .bg_babcbc {
+    background: #e6b280;
+}
+.bg_babcbc {
+    background: #babcbc;
+}
+
+.status_wrap {
+    padding: 7px;
+    margin-top: -3px;
+    color: #fff;
+    border-radius: 0 0 5px 5px;
+    /*height: 55px;*/
+}
+.status_wrap > span.dev_name {
+    font-size: 11px;
+}
+.status_wrap > span {
+    display: inline-block;
+    font-size: 11px;
+    /*margin-bottom: 16px;*/
+    word-wrap: break-word;
+    height: 20px;
+    width: 100%;
+}
+
+
+.device{
+    /*width: 100px;*/
+    /*height: 100px;*/
+    /*background-color: green;*/
+    border-radius: 5px;
+    position: absolute;
+    box-shadow: #767b8e 0 0 10px 1px;
+    /*box-shadow: #dfe 0 0 10px 1px;*/
+}
+
+.deviceInfo{
+    background-color: #736767;
+}
+
+.playlist_editer_wrap{
+    position: relative;
+}
+
+.scrolling {
+    position: absolute;
+    left: -70px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    white-space: nowrap;
+    max-width: 300px;
+    border-radius: 5px;
+}
+
+.noscrolling {
+    position: absolute;
+    left: 30px;
+    max-width: 100px;
+    border-radius: 5px;
+}
+
+.scrolling ul ,
+.noscrolling ul{
+    white-space: nowrap;
+    padding-left: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    height: 92px;
+    /*height: 100px;*/
+    /*overflow-x: scroll;*/
+    /*overflow-y: auto;*/
+}
+
+.scrolling ul li,
+.noscrolling ul li {
+    padding: 10px 5px 5px 10px;
+    list-style: none;
+    /*float: left;*/
+    white-space: nowrap;
+    width: 100px;
+    height: 92px;
+    /*height: 100px;*/
+    display: inline-block;
+    background-color: #ff9a9a;
+}
+
+/*.playlist_editer_wrap .scrolling li > div > img,*/
+/*.playlist_editer_wrap .noscrolling li > div > img{*/
+    /*width: 78px;*/
+    /*height: 78px;*/
+    /*border: 4px solid #fff;*/
+    /*box-shadow: 0px 1px 0px #e7e7e7;*/
+/*}*/
+
+.scrolling ul li > div,
+.noscrolling ul li > div{
+    /*height: 136px;*/
+    float: left;
+    position: relative;
+    width: 86px;
+}
+.scrolling ul li > div > img,
+.noscrolling ul li > div > img {
+    max-width: 78px;
+    max-height: 78px;
+    border: 4px solid #fff;
+    box-shadow: 0px 1px 0px #e7e7e7;
+}
+
+.playlist_editer_wrap .scrolling ul li .name,
+.playlist_editer_wrap .noscrolling ul li .name {
+    margin: 0 0 -9px 0;
+    font-size: 12px;
+    width: 80px;
+    /* line-height: 22px; */
+}
+.text-overflow {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+}
+
+#floatTip {
+    position: absolute; /* Абсолютное позиционирование */
+    width: 250px; /* Ширина блока */
+    display: none; /* Прячем от показа */
+    border: 1px solid #000; /* Параметры рамки */
+    border-radius: 5px;
+    padding: 4px; /* Поля вокруг  текста */
+    font-family: sans-serif; /* Рубленый шрифт */
+    font-size: 9pt; /* Размер  шрифта */
+    color: #333; /* Цвет текста */
+    /*background: #ffe5ff; !* Цвет фона *!*/
+    background: #b7fff1; /* Цвет фона */
+    z-index: 1000;
+}

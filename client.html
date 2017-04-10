@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hospital Client</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="styles.css">
+      <script src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
+  </head>
+
+  <body>
+
+      <script>
+
+          //TODO take jquery view references in separate classes View.  MVC structure:  controller go trough model and calling view functions
+
+          $(document).ready(function () {
+              var $url = 'http://34.198.20.245:7001/MagicInfo2/j_spring_security_check';
+
+              var myData = {
+                      "j_username":"admin",
+                      "j_password":"NBjMiXhl3tddjyD14Iwx"
+              };
+
+              function setHeader(xhr) {
+                  xhr.setRequestHeader('Authorization', token);
+              }
+
+              $.ajax({
+
+                  url: $url,
+                  data: myData,
+                  type: 'POST',
+                  dataType: 'jsonp',
+                  success: function() { alert("Success"); },
+                  error: function() { alert('Failed!'); },
+//                  beforeSend: setHeader
+              });
+          });
+      </script>
+  </body>
+</html>
