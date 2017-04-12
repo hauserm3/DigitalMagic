@@ -7,12 +7,18 @@
     <link rel="stylesheet" href="libs/font-awesome.css">
     <link rel="stylesheet" href="style.css">
     <script src="/libs/jquery-3.1.0.min.js"></script>
-    <!--<script src="/libs/bootstrap.min.js"></script>-->
+    <script src="/libs/bootstrap.min.js"></script>
     <script src="/src/tooltip.js"></script>
 </head>
 <body>
     <div id="MyBackround">
         <div id="MyContainer">
+            <div id="OrganizationList" class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                    Organization List <span class="caret"></span>
+                </button>
+                <ul  class="dropdown-menu"></ul>
+            </div>
             <img src="img/toronto.png">
         </div>
     </div>
@@ -21,6 +27,7 @@
 
     <script src="/src/myDevice.js"></script>
     <script src="/src/myPlaylist.js"></script>
+    <script src="/src/myModal.js"></script>
     <script>
         var devices_arr;
         var positions = [
@@ -45,18 +52,34 @@
 
         $(document).ready(function () {
 
-            $.get('getAllDevices').done(function (res) {
-                devices_arr = res;
-//                console.log('getAllDevices ', res);
-                res.forEach(function (item, i, arr) {
-                    var Device = new magic.MyDevice(item);
-//                    console.log('Device ', Device.deviceConnection);
-                    Device.createDeviceBlock(positions[i]);
+            var getData = function () {
+                $.get('getOrganizationList').done(function(res) {
+                    console.log('getOrganizationList', res);
+                    res.forEach(function (item, i, arr) {
+                        $('#OrganizationList>ul').append(
+                            $('<li>').append(
+                                $('<a>').attr('href',item.group_id[0]).text(item.group_name[0])));
+                    });
+                }).fail(function (error) {
+                    console.error('error', error);
                 });
 
-            }).fail(function (error) {
-                console.log('error', error);
-            });
+                $.get('getAllDevices').done(function (res) {
+                    devices_arr = res;
+                    // console.log('getAllDevices ', res);
+                    res.forEach(function (item, i, arr) {
+                        var Device = new magic.MyDevice(item);
+                        // console.log('Device ', Device.deviceConnection);
+                        Device.createDeviceBlock(positions[i]);
+                    });
+
+                }).fail(function (error) {
+                    console.error('error', error);
+                });
+            };
+
+            getData();
+//            setInterval(function(){getData()},10000);
         });
     </script>
 </body>

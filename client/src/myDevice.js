@@ -1,19 +1,19 @@
 ///<reference path="index.d.ts"/>
 ///<reference path="myPlaylist.ts"/>
+///<reference path="myModal.ts"/>
 var magic;
 (function (magic) {
     var MyDevice = (function () {
         function MyDevice(device) {
-            var _this = this;
             this.device = device;
             this.container = $('#MyContainer');
             this.device = device;
             this.$view = $('<div>').attr('id', this.device.device_id[0]).addClass('device thumbview_wrapper');
-            this.$view.on('click', function () {
-                if (_this.playlist) {
-                    _this.playlist.togglePlaylist();
-                }
-            });
+            // this.$view.on('click',()=>{
+            //    if(this.playlist){
+            //        this.playlist.togglePlaylist();
+            //    }
+            // });
             this.deviceId = device.device_id[0];
             this.init();
             // console.log('DEVICE', device);
@@ -23,6 +23,7 @@ var magic;
             var ViewThumb1 = $('<div>').addClass('thumbview_box device_thumb');
             var ViewThumb2 = $('<div>').addClass('dev_thumb_img_wrapper');
             this.$thumb = $('<div>').addClass('dev_img_thumb');
+            // this.$thumb = $('<div>').addClass('dev_img_thumb').attr('data-toggle', 'modal').attr('data-target','#Modal');
             var toolText = "toolTip('Device type: " + this.device.device_type[0] + "<br>" +
                 "Resolution: " + this.device.resolution[0] + "<br>" +
                 "MAC Address: " + this.device.mac_address[0] + "<br>" +
@@ -52,9 +53,13 @@ var magic;
         MyDevice.prototype.setDeviceState = function (state) {
             if (state == 'true') {
                 this.$view.addClass('active');
+                this.$thumb.attr('data-toggle', 'modal').attr('data-target', '#Modal-' + this.deviceId);
                 this.getThumbnail();
                 this.playlist = new magic.MyPlaylist(this.device);
-                this.$view.append(this.playlist.$view);
+                // this.$view.append(this.playlist.$view);
+                this.modal = new magic.MyModal(this.device);
+                this.$view.append(this.modal.$view);
+                this.modal.$modalFooter.append(this.playlist.$view);
             }
             else {
                 this.$view.removeClass('active');
@@ -65,13 +70,21 @@ var magic;
             var _this = this;
             var device_id = this.deviceId;
             $.get('getDeviceThumbnailURL' + '?device_id=' + device_id).done(function (res) {
-                // console.log('res', res);
+                // console.log('res', res);;
+                _this.thumbDevice = res;
                 _this.$thumb.css({
                     "background-image": "url(" + "'" + res + "'" + ")",
                     "background-size": "auto 100%",
                 });
+                _this.modal.setModalThumb(_this.thumbDevice);
+                console.log('modal.thumbDevice', _this.modal.thumbDevice);
             }).fail(this.onError);
         };
+        // getOrganizationList(){
+        //     $.get('getOrganizationList').done((res)=> {
+        //         console.log('getOrganizationList', res);
+        //     }).fail(this.onError);
+        // }
         MyDevice.prototype.onError = function (error) {
             console.error(error);
         };

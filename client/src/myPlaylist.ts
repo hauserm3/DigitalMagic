@@ -13,7 +13,7 @@ module magic{
             this.device = device;
             this.$view = $('<div>').addClass('playlist_editer_wrap');
             this.$listConteiner = $('<div>').addClass('scrolling').appendTo(this.$view);
-            this.hidePlaylist();
+            // this.hidePlaylist();
             this.getPlayingContent(device.device_id[0]);
         }
 
@@ -80,7 +80,8 @@ module magic{
         setPlayingContent(playingContent: any, myList: any){
             let src_thumb1 = 'http://34.196.180.158:7001/MagicInfo/servlet/ContentThumbnail?thumb_id=';
             let src_thumb2 = '&thumb_filename=';
-            let src_thumb3 = '_MEDIUM.PNG&width=100&height=56';
+            let src_thumb3 = '_MEDIUM.PNG';
+            // let src_thumb3 = '_MEDIUM.PNG&width=100&height=56';
 
             let li = $('<li>').appendTo(myList); // reference to $myList
             let div = $('<div>').appendTo(li);

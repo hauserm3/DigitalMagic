@@ -7,7 +7,7 @@ var magic;
             this.device = device;
             this.$view = $('<div>').addClass('playlist_editer_wrap');
             this.$listConteiner = $('<div>').addClass('scrolling').appendTo(this.$view);
-            this.hidePlaylist();
+            // this.hidePlaylist();
             this.getPlayingContent(device.device_id[0]);
         }
         MyPlaylist.prototype.showPlaylist = function () {
@@ -74,7 +74,8 @@ var magic;
         MyPlaylist.prototype.setPlayingContent = function (playingContent, myList) {
             var src_thumb1 = 'http://34.196.180.158:7001/MagicInfo/servlet/ContentThumbnail?thumb_id=';
             var src_thumb2 = '&thumb_filename=';
-            var src_thumb3 = '_MEDIUM.PNG&width=100&height=56';
+            var src_thumb3 = '_MEDIUM.PNG';
+            // let src_thumb3 = '_MEDIUM.PNG&width=100&height=56';
             var li = $('<li>').appendTo(myList); // reference to $myList
             var div = $('<div>').appendTo(li);
             var img = $('<img>').attr('src', src_thumb1 + playingContent.thumb_file_id[0] +

@@ -1,5 +1,6 @@
 ///<reference path="index.d.ts"/>
 ///<reference path="myPlaylist.ts"/>
+///<reference path="myModal.ts"/>
 
 
 module magic {
@@ -10,15 +11,17 @@ module magic {
         deviceConnection: string;
         deviceId: string;
         playlist: MyPlaylist;
+        modal: MyModal;
+        thumbDevice: string;
 
         constructor(private device: any){
             this.device = device;
             this.$view = $('<div>').attr('id', this.device.device_id[0]).addClass('device thumbview_wrapper');
-            this.$view.on('click',()=>{
-               if(this.playlist){
-                   this.playlist.togglePlaylist();
-               }
-            });
+            // this.$view.on('click',()=>{
+            //    if(this.playlist){
+            //        this.playlist.togglePlaylist();
+            //    }
+            // });
             this.deviceId = device.device_id[0];
             this.init();
             // console.log('DEVICE', device);
@@ -29,6 +32,7 @@ module magic {
             let ViewThumb1 = $('<div>').addClass('thumbview_box device_thumb');
             let ViewThumb2 = $('<div>').addClass('dev_thumb_img_wrapper');
             this.$thumb = $('<div>').addClass('dev_img_thumb');
+            // this.$thumb = $('<div>').addClass('dev_img_thumb').attr('data-toggle', 'modal').attr('data-target','#Modal');
 
             let toolText = "toolTip('Device type: "+this.device.device_type[0]+"<br>" +
                 "Resolution: "+this.device.resolution[0]+"<br>" +
@@ -64,9 +68,14 @@ module magic {
         setDeviceState(state: string){
             if(state == 'true'){
                 this.$view.addClass('active');
+                this.$thumb.attr('data-toggle', 'modal').attr('data-target','#Modal-'+this.deviceId);
                 this.getThumbnail();
                 this.playlist = new MyPlaylist(this.device);
-                this.$view.append(this.playlist.$view)
+                // this.$view.append(this.playlist.$view);
+
+                this.modal = new MyModal(this.device);
+                this.$view.append(this.modal.$view);
+                this.modal.$modalFooter.append(this.playlist.$view);
             }
             else {this.$view.removeClass('active')}
             this.deviceConnection = state;
@@ -75,13 +84,22 @@ module magic {
         getThumbnail(){
             let device_id = this.deviceId;
             $.get('getDeviceThumbnailURL' + '?device_id=' + device_id).done((res)=> {
-                // console.log('res', res);
+                // console.log('res', res);;
+                this.thumbDevice = res;
                 this.$thumb.css({
                     "background-image": "url(" + "'" + res + "'" + ")",
                     "background-size": "auto 100%",
                 });
+                this.modal.setModalThumb(this.thumbDevice);
+                console.log('modal.thumbDevice', this.modal.thumbDevice)
             }).fail(this.onError);
         }
+
+        // getOrganizationList(){
+        //     $.get('getOrganizationList').done((res)=> {
+        //         console.log('getOrganizationList', res);
+        //     }).fail(this.onError);
+        // }
 
         onError(error){
             console.error(error);

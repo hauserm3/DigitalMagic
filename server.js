@@ -730,9 +730,11 @@ app.get('/getDevicePlayingContent', function (req, res) {
         response.on('end', function () {
             // console.log('rawData', rawData);
             parseString(rawData, function (err, result) {
+                delete result.response.responseClass[0]['$'];
                 res.send(result.response.responseClass[0]);
-                console.log('programId: ', result.response.responseClass[0].programId[0]);
-                console.log('frameIndex: ', result.response.responseClass[0].contentLists[0].ContentList[0].frameIndex[0]);
+                // console.log('programId: ', result.response.responseClass[0].$);
+                // console.log('programId: ', result.response.responseClass[0].programId[0]);
+                // console.log('frameIndex: ', result.response.responseClass[0].contentLists[0].ContentList[0].frameIndex[0]);
                 // console.log('parseString', result.response.responseClass[0].resultList[0].Playlist);
                 // console.log('rawData', result.response.responseClass[0]);
             });
@@ -1114,6 +1116,48 @@ app.get('/getPlayingContent2', function (req, res) {
                 });
                 http_req.write(data);
                 http_req.end();
+            });
+        }).on('error', function (err) {
+            console.error(err);
+        });
+    });
+    http_req.write(data);
+    http_req.end();
+});
+app.get('/getOrganizationList', function (req, res) {
+    var data = querystring.stringify({
+        service: 'CommonUserService.getOrganizationList',
+        token: token
+    });
+    var options = {
+        host: '34.196.180.158',
+        port: 7001,
+        path: '/MagicInfo/openapi/open',
+        method: 'POST',
+        headers: {
+            'Connection': 'keep-alive',
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Length': Buffer.byteLength(data),
+            'User-Agent': 'Mozilla/5.0'
+        }
+    };
+    var http_req = http.request(options, function (response) {
+        response.setEncoding('utf8');
+        var rawData = '';
+        response.on('data', function (chunk) {
+            rawData += chunk;
+            // console.log("body: " + chunk);
+        });
+        response.on('end', function () {
+            // console.log('rawData', rawData);
+            parseString(rawData, function (err, result) {
+                // console.log('OrgList', result.response.responseClass[0]);
+                res.send(result.response.responseClass[0].resultList[0].UserGroup);
+                // console.log('programId: ', result.response.responseClass[0].$);
+                // console.log('programId: ', result.response.responseClass[0].programId[0]);
+                // console.log('frameIndex: ', result.response.responseClass[0].contentLists[0].ContentList[0].frameIndex[0]);
+                // console.log('parseString', result.response.responseClass[0].resultList[0].Playlist);
+                // console.log('rawData', result.response.responseClass[0]);
             });
         }).on('error', function (err) {
             console.error(err);
