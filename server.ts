@@ -4,28 +4,36 @@ import * as bodyParser from "body-parser";
 // let express = require('express');
 let querystring = require('querystring');
 let http = require('http');
+let fs = require('fs');
 let app = express();
 
 let parseString = require('xml2js').parseString;
 let path = require('path');
 
-declare var global:any;
-declare var ROOT:string;
-declare var WWW:string;
-declare var SERVER:string;
+declare let global:any;
+declare let ROOT:string;
+declare let WWW:string;
+declare let SERVER:string;
+
+
+const port: number = 5000;
+const PLAYERS = require('./devices');
+console.log('PLAYERS', PLAYERS);
 
 global.ROOT = __dirname;
 global.WWW = path.resolve(ROOT + '/client/');
 global.SERVER = path.resolve(ROOT + '/server/');
 
 //authorization
-var username = "admin",
+let username = "admin",
     password = "DjGaZ8AIxTUrbJXIFH5Q";
-var auth = "Basic " + new Buffer(username + ":" + password).toString("base64");
-var token = '';
-var tokenTimestamp = 0;
+// let username = "BellCanada",
+//     password = "vIgU9N1u1X4c7w6Ry0";
+let auth = "Basic " + new Buffer(username + ":" + password).toString("base64");
+let token = '';
+let tokenTimestamp = 0;
 
-var playlists, playlist_content, allDevices, devices, devicesDisconnection, devicesConnection, deviceConnectionEntity;
+let playlists, playlist_content, allDevices, devices, devicesDisconnection, devicesConnection, deviceConnectionEntity;
 
 // app.use('libs', express.static(ROOT + '/client/libs/'));
 // app.use(express.static(ROOT + '/client/libs/'));
@@ -41,7 +49,7 @@ let getToken = function (req, res, next) {
         return;
     }
 
-    var options = {
+    let options = {
         host: '34.196.180.158',
         port: 7001,
         path: '/MagicInfo/openapi/getAuthToken',
@@ -58,7 +66,7 @@ let getToken = function (req, res, next) {
         }
     };
 
-    var http_req = http.request(options, function(response) {
+    let http_req = http.request(options, function(response) {
         response.setEncoding('utf8');
         let rawData = '';
         response.on('data', function (chunk) {
@@ -86,53 +94,12 @@ let getToken = function (req, res, next) {
 
 app.use(getToken);
 
+
+
 app.use('/',bodyParser.urlencoded({extended: true}));
 app.use('/',bodyParser.json());
 
 // app.use('/api',require('./server/api/api_requests'));
-
-// app.get('/', function (req, res, next) {
-// //getAuthToken
-// //   var options = {
-// //     host: '34.196.180.158',
-// //     port: 7001,
-// //     path: '/MagicInfo/openapi/getAuthToken',
-// //     method: 'GET',
-// //     headers: {
-// //       'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-// //       'Accept-Encoding':'gzip, deflate, sdch',
-// //       'Accept-Language':'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4',
-// //       'Connection':'keep-alive',
-// //       'Upgrade-Insecure-Requests':1,
-// //       // 'Content-Length': Buffer.byteLength(data),
-// //       "Authorization" : auth,
-// //       'User-Agent':'Mozilla/5.0'
-// //     }
-// //   };
-// //
-// //   var http_req = http.request(options, function(response) {
-// //     response.setEncoding('utf8');
-// //     let rawData = '';
-// //     response.on('data', function (chunk) {
-// //       rawData += chunk;
-// //       console.log("body: " + chunk);
-// //     });
-// //     response.on('end', function() {
-// //       res.send(rawData);
-// //       console.log('end', rawData);
-// //       parseString(rawData, function (err, result) {
-// //         token = result.response.responseClass[0]._;
-// //         console.log('parseString', result.response.responseClass[0]._);
-// //       });
-// //     }).on('error', function(err) {
-// //       console.error(err);
-// //     });
-// //   });
-// //
-// //   http_req.end();
-//     console.log('token ', token);
-//     res.send(token);
-// });
 
 app.get('/', function (req: express.Request, res: express.Response) {
     res.sendFile('index.html',{'root':WWW});
@@ -140,23 +107,15 @@ app.get('/', function (req: express.Request, res: express.Response) {
 
 app.get('/getAuthToken', getToken);
 
-// app.get('/dashboard', function (req: express.Request, res: express.Response) {
-//     res.sendFile('index.html',{'root':WWW});
-// });
-//
-// app.get('/dashboard/*', function (req: express.Request, res: express.Response) {
-//     res.sendFile('index.html',{'root':WWW});
-// });
-
 app.get('/getCategoryList', function (req, res) {
-  var data = querystring.stringify({
+  let data = querystring.stringify({
     // _csrf:'b3862bdd-115d-4f28-b182-50dfe001e3f5',
     service:'CommonContentService.getCategoryList',
     token:token,
     groupId:''
   });
 
-  var options = {
+  let options = {
     host: '34.196.180.158',
     port: 7001,
     path: '/MagicInfo/openapi/open',
@@ -169,7 +128,7 @@ app.get('/getCategoryList', function (req, res) {
     }
   };
 
-  var http_req = http.request(options, function(response) {
+  let http_req = http.request(options, function(response) {
     response.setEncoding('utf8');
     let rawData = '';
     response.on('data', function (chunk) {
@@ -186,10 +145,10 @@ app.get('/getCategoryList', function (req, res) {
 
   http_req.write(data);
   http_req.end();
-});
+}); /// ??? DELETE
 
 app.get('/addContent', function (req, res) {
-  var data = querystring.stringify({
+  let data = querystring.stringify({
     // _csrf:'b3862bdd-115d-4f28-b182-50dfe001e3f5',
     service:'CommonContentService.addContent',
     token:token,
@@ -197,7 +156,7 @@ app.get('/addContent', function (req, res) {
     locale:'en_US'
   });
 
-  var options = {
+  let options = {
     host: '34.196.180.158',
     port: 7001,
     path: '/MagicInfo/openapi/open',
@@ -210,7 +169,7 @@ app.get('/addContent', function (req, res) {
     }
   };
 
-  var http_req = http.request(options, function(response) {
+  let http_req = http.request(options, function(response) {
     response.setEncoding('utf8');
     let rawData = '';
     response.on('data', function (chunk) {
@@ -227,10 +186,10 @@ app.get('/addContent', function (req, res) {
 
   http_req.write(data);
   http_req.end();
-});
+});  /// ??? DELETE
 
 app.get('/downloadContent', function (req, res) {
-  var data = querystring.stringify({
+  let data = querystring.stringify({
     // _csrf:'b3862bdd-115d-4f28-b182-50dfe001e3f5',
     service:'CommonContentService.downloadContent',
     token:token,
@@ -239,7 +198,7 @@ app.get('/downloadContent', function (req, res) {
     locale:'en_US'
   });
 
-  var options = {
+  let options = {
     host: '34.196.180.158',
     port: 7001,
     path: '/MagicInfo/openapi/open',
@@ -252,7 +211,7 @@ app.get('/downloadContent', function (req, res) {
     }
   };
 
-  var http_req = http.request(options, function(response) {
+  let http_req = http.request(options, function(response) {
     response.setEncoding('utf8');
     let rawData = '';
     response.on('data', function (chunk) {
@@ -269,18 +228,18 @@ app.get('/downloadContent', function (req, res) {
 
   http_req.write(data);
   http_req.end();
-});
+});  /// ??? DELETE
 
 app.get('/getPlaylistListByUser', function (req, res) {
     // console.log('TOKEN ', token);
 
-    var data = querystring.stringify({
+    let data = querystring.stringify({
         service:'PremiumPlaylistService.getPlaylistListByUser',
         token:token,
         userId:username
     });
 
-    var options = {
+    let options = {
         host: '34.196.180.158',
         port: 7001,
         path: '/MagicInfo/openapi/open',
@@ -293,7 +252,7 @@ app.get('/getPlaylistListByUser', function (req, res) {
         }
     };
 
-    var http_req = http.request(options, function(response) {
+    let http_req = http.request(options, function(response) {
         response.setEncoding('utf8');
         let rawData = '';
         response.on('data', function (chunk) {
@@ -320,14 +279,14 @@ app.get('/getContentListOfPlaylist', function (req, res) {
     // console.log('getContentListOfPlaylist ', req);
     // console.log('req.query ', req.query.playlistId);
     // console.log('req.query ', req.query.versionId);
-    var data = querystring.stringify({
+    let data = querystring.stringify({
         service:'PremiumPlaylistService.getContentListOfPlaylist',
         token:token,
         playlistId:req.query.playlistId,
         versionId:req.query.versionId
     });
 
-    var options = {
+    let options = {
         host: '34.196.180.158',
         port: 7001,
         path: '/MagicInfo/openapi/open',
@@ -340,7 +299,7 @@ app.get('/getContentListOfPlaylist', function (req, res) {
         }
     };
 
-    var http_req = http.request(options, function(response) {
+    let http_req = http.request(options, function(response) {
         response.setEncoding('utf8');
         let rawData = '';
         response.on('data', function (chunk) {
@@ -390,7 +349,7 @@ let getDevices = function (req, res, next) {
 
     let http_req = http.request(optionsDevices, function(response) {
         response.setEncoding('utf8');
-        var rawData = '';
+        let rawData = '';
         response.on('data', function (chunk) {
             rawData += chunk;
             // console.log("body: " + chunk);
@@ -422,7 +381,7 @@ let getDevicesConnection = function (req, res, next) {
 
     let http_req = http.request(optionsDevices, function(response) {
         response.setEncoding('utf8');
-        var rawData = '';
+        let rawData = '';
         response.on('data', function (chunk) {
             rawData += chunk;
             // console.log("body: " + chunk);
@@ -450,7 +409,7 @@ let getDevicesDisconnection = function (req, res, next) {
     console.log('GDD');
     let http_req = http.request(optionsDevices, function(response) {
         response.setEncoding('utf8');
-        var rawData = '';
+        let rawData = '';
         response.on('data', function (chunk) {
             rawData += chunk;
             // console.log("body: " + chunk);
@@ -479,14 +438,14 @@ app.get('/getDevices', [getDevices, getDevicesConnection, getDevicesDisconnectio
 });
 
 app.get('/getAllDevices', function (req, res) {
-    var data = querystring.stringify({
+    let data = querystring.stringify({
         service:'PremiumDeviceService.getDeviceListWithDeviceType',
         token:token,
         condition: '<DeviceCondition><statusViewMode>device_status_view_all</statusViewMode></DeviceCondition>',
         deviceType:'ALL'
     });
 
-    var options = {
+    let options = {
         host: '34.196.180.158',
         port: 7001,
         path: '/MagicInfo/openapi/open',
@@ -499,7 +458,7 @@ app.get('/getAllDevices', function (req, res) {
         }
     };
 
-    var http_req = http.request(options, function(response) {
+    let http_req = http.request(options, function(response) {
         response.setEncoding('utf8');
         let rawData = '';
         response.on('data', function (chunk) {
@@ -521,17 +480,17 @@ app.get('/getAllDevices', function (req, res) {
 
     http_req.write(data);
     http_req.end();
-});
+}); /// !!! USED
 
 app.get('/getAllDevices2', function (req, res) {
-    var data = querystring.stringify({
+    let data = querystring.stringify({
         service:'PremiumDeviceService.getDeviceListWithDeviceType',
         token:token,
         condition: '<DeviceCondition><statusViewMode>device_status_view_all</statusViewMode></DeviceCondition>',
         deviceType:'ALL'
     });
 
-    var options = {
+    let options = {
         host: '34.196.180.158',
         port: 7001,
         path: '/MagicInfo/openapi/open',
@@ -544,7 +503,7 @@ app.get('/getAllDevices2', function (req, res) {
         }
     };
 
-    var http_req = http.request(options, function(response) {
+    let http_req = http.request(options, function(response) {
         response.setEncoding('utf8');
         let rawData = '';
         response.on('data', function (chunk) {
@@ -572,13 +531,13 @@ app.get('/getAllDevices2', function (req, res) {
         return dIds;
     };
 
-    var data2 = {
+    let data2 = {
         service: 'PremiumDeviceService.getDeviceConnectionList',
         token: token,
         deviceIds: deviceIds
     };
 
-    var http_req2 = http.request(options, function(response) {
+    let http_req2 = http.request(options, function(response) {
 
         response.setEncoding('utf8');
         let rawData = '';
@@ -604,13 +563,13 @@ app.get('/getAllDevices2', function (req, res) {
 });
 
 app.get('/getDeviceConnection', function (req, res) {
-    var data = querystring.stringify({
+    let data = querystring.stringify({
         service: 'PremiumDeviceService.getDeviceConnection',
         token: token,
         deviceId: req.query.deviceId
     });
 
-    var options = {
+    let options = {
         host: "34.196.180.158",
         port: 7001,
         path: '/MagicInfo/openapi/open',
@@ -623,7 +582,7 @@ app.get('/getDeviceConnection', function (req, res) {
         }
     };
 
-    var http_req = http.request(options, function(response) {
+    let http_req = http.request(options, function(response) {
         response.setEncoding('utf8');
         let rawData = '';
         response.on('data', function (chunk) {
@@ -644,16 +603,16 @@ app.get('/getDeviceConnection', function (req, res) {
 
     http_req.write(data);
     http_req.end();
-});
+});  /// !!! USED
 
 app.get('/getDeviceConnectionList', function (req, res) {
-    var data = querystring.stringify({
+    let data = querystring.stringify({
         service: 'PremiumDeviceService.getDeviceConnectionList',
         token: token,
         deviceIds: req.query.deviceIds
     });
 
-    var options = {
+    let options = {
         host: "34.196.180.158",
         port: 7001,
         path: '/MagicInfo/openapi/open',
@@ -666,7 +625,7 @@ app.get('/getDeviceConnectionList', function (req, res) {
         }
     };
 
-    var http_req = http.request(options, function(response) {
+    let http_req = http.request(options, function(response) {
         response.setEncoding('utf8');
         let rawData = '';
         response.on('data', function (chunk) {
@@ -693,14 +652,14 @@ app.get('/getDeviceListWithDeviceType', function (req, res) {
     // console.log('getContentListOfPlaylist ', req);
     // console.log('req.query ', req.query.playlistId);
     // console.log('req.query ', req.query.versionId);
-    var data = querystring.stringify({
+    let data = querystring.stringify({
         service:'PremiumDeviceService.getDeviceListWithDeviceType',
         token:token,
         // condition: "<DeviceCondition><statusViewMode>device_status_view_connection</statusViewMode></DeviceCondition>",
         deviceType:'ALL'
     });
 
-    var options = {
+    let options = {
         host: '34.196.180.158',
         port: 7001,
         path: '/MagicInfo/openapi/open',
@@ -713,7 +672,7 @@ app.get('/getDeviceListWithDeviceType', function (req, res) {
         }
     };
 
-    var http_req = http.request(options, function(response) {
+    let http_req = http.request(options, function(response) {
         response.setEncoding('utf8');
         let rawData = '';
         response.on('data', function (chunk) {
@@ -740,13 +699,13 @@ app.get('/getDeviceThumbnailURL', function (req, res) {
     // console.log('getDeviceThumbnailURL ', req.query.device_id);
     // console.log('req.query ', req.query.playlistId);
     // console.log('req.query ', req.query.versionId);
-    var data = querystring.stringify({
+    let data = querystring.stringify({
         service: 'PremiumDeviceService.getDeviceThumbnailURL',
         token: token,
         device_id: req.query.device_id
     });
 
-    var options = {
+    let options = {
         host: '34.196.180.158',
         port: 7001,
         path: '/MagicInfo/openapi/open',
@@ -759,7 +718,7 @@ app.get('/getDeviceThumbnailURL', function (req, res) {
         }
     };
 
-    var http_req = http.request(options, function(response) {
+    let http_req = http.request(options, function(response) {
         response.setEncoding('utf8');
         let rawData = '';
         response.on('data', function (chunk) {
@@ -780,19 +739,19 @@ app.get('/getDeviceThumbnailURL', function (req, res) {
 
     http_req.write(data);
     http_req.end();
-});
+}); /// !!! USED
 
 app.get('/getDevicePlayingContent', function (req, res) {
     // console.log('getDevicePlayingContent ', req.query.deviceId);
     // console.log('req.query ', req.query.playlistId);
     // console.log('req.query ', req.query.versionId);
-    var data = querystring.stringify({
+    let data = querystring.stringify({
         service: 'PremiumDeviceService.getDevicePlayingContent',
         token: token,
         deviceId: req.query.deviceId
     });
 
-    var options = {
+    let options = {
         host: '34.196.180.158',
         port: 7001,
         path: '/MagicInfo/openapi/open',
@@ -805,7 +764,7 @@ app.get('/getDevicePlayingContent', function (req, res) {
         }
     };
 
-    var http_req = http.request(options, function(response) {
+    let http_req = http.request(options, function(response) {
         response.setEncoding('utf8');
         let rawData = '';
         response.on('data', function (chunk) {
@@ -830,7 +789,7 @@ app.get('/getDevicePlayingContent', function (req, res) {
 
     http_req.write(data);
     http_req.end();
-});
+}); /// !!! USED
 
 ////////////////// DEVICES END ///////////////////
 
@@ -838,13 +797,13 @@ app.get('/getContentInfo', function (req, res) {
     // console.log('getDeviceThumbnailURL ', req.query.device_id);
     // console.log('req.query ', req.query.playlistId);
     // console.log('req.query ', req.query.versionId);
-    var data = querystring.stringify({
+    let data = querystring.stringify({
         service: 'CommonContentService.getContentInfo',
         token: token,
         contentId: req.query.contentId
     });
 
-    var options = {
+    let options = {
         host: '34.196.180.158',
         port: 7001,
         path: '/MagicInfo/openapi/open',
@@ -857,7 +816,7 @@ app.get('/getContentInfo', function (req, res) {
         }
     };
 
-    var http_req = http.request(options, function(response) {
+    let http_req = http.request(options, function(response) {
         response.setEncoding('utf8');
         let rawData = '';
         response.on('data', function (chunk) {
@@ -1087,7 +1046,7 @@ app.get('/getPlayingContent', function (req, res) {
 
     http_req.write(data);
     http_req.end();
-});
+});  /// !!! USED
 
 
 app.get('/getPlayingContent2', function (req, res) {
@@ -1253,7 +1212,7 @@ app.get('/getPlayingContent2', function (req, res) {
 
     http_req.write(data);
     http_req.end();
-});
+}); /// ??? DELETE
 
 app.get('/getOrganizationList', function (req, res) {
     let data = querystring.stringify({
@@ -1286,11 +1245,6 @@ app.get('/getOrganizationList', function (req, res) {
             parseString(rawData, function (err, result) {
                 // console.log('OrgList', result.response.responseClass[0]);
                 res.send(result.response.responseClass[0].resultList[0].UserGroup);
-                // console.log('programId: ', result.response.responseClass[0].$);
-                // console.log('programId: ', result.response.responseClass[0].programId[0]);
-                // console.log('frameIndex: ', result.response.responseClass[0].contentLists[0].ContentList[0].frameIndex[0]);
-                // console.log('parseString', result.response.responseClass[0].resultList[0].Playlist);
-                // console.log('rawData', result.response.responseClass[0]);
             });
         }).on('error', function(err) {
             console.error(err);
@@ -1299,9 +1253,9 @@ app.get('/getOrganizationList', function (req, res) {
 
     http_req.write(data);
     http_req.end();
-});
+}); /// ??? USED
 
-app.listen(5000, function () {
+app.listen(port, function () {
 
-  console.log('app listening on port 5000! http://localhost:5000/');
+  console.log('app listening on port ' + port + '! http://localhost:' + port + '/');
 });

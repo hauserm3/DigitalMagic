@@ -1,14 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-    <meta charset="UTF-8">
+
     <title>DigitalMagic</title>
-    <link rel="stylesheet" href="libs/bootstrap.min.css">
-    <link rel="stylesheet" href="libs/font-awesome.css">
+
+    <link rel="stylesheet" href="./libs/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="/libs/jquery-3.1.0.min.js"></script>
-    <script src="/libs/bootstrap.min.js"></script>
-    <script src="/src/tooltip.js"></script>
+    <script src="./libs/jquery-3.1.0.min.js"></script>
+    <script src="./libs/bootstrap.min.js"></script>
+    <script src="./src/toolTip.js"></script>
+
+    <style type="text/css">
+
+        #map-canvas {
+            height: 900px;
+            width: 100%;
+        }
+
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYZoEBypb8_mF2GLqrvDE1BrdPQ6aSu8Q">
+    </script>
+    <script type="text/javascript" src="./src/myCustomGoogleMapMarker.js"></script>
+    <script type="text/javascript">
+
+        function initialize2() {
+
+//            var myLatlng = new google.maps.LatLng(43.734022, -79.333717);
+//            var myLatlng2 = new google.maps.LatLng(43.714022, -79.333717);
+//            var mapOptions = {
+//                zoom: 12,
+//                center: myLatlng,
+//                disableDefaultUI: true
+//            };
+
+//            var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+//            overlay = new magic.CustomMarker(
+//                myLatlng,
+//                map,
+//                {
+//                    marker_id: 'myMarker',
+//                    color: 'red'
+//                }
+//            );
+//            overlay2 = new magic.CustomMarker(
+//                myLatlng2,
+//                map,
+//                {
+//                    marker_id: 'myMarker2',
+//                    color: 'red'
+//                }
+//            );
+        }
+
+    </script>
+
 </head>
 <body>
     <div id="MyBackround">
@@ -17,17 +64,17 @@
                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                     Organization List <span class="caret"></span>
                 </button>
-                <ul  class="dropdown-menu"></ul>
+                <ul class="dropdown-menu"></ul>
             </div>
-            <img src="img/toronto.png">
+            <div id="map-canvas"></div>
+            <!--<img src="img/toronto.png">-->
         </div>
     </div>
     <div id="floatTip"></div>
 
-
-    <script src="/src/myDevice.js"></script>
-    <script src="/src/myPlaylist.js"></script>
-    <script src="/src/myModal.js"></script>
+    <script src="./src/myDevice.js"></script>
+    <script src="./src/myPlaylist.js"></script>
+    <script src="./src/myModal.js"></script>
     <script>
         var devices_arr;
         var positions = [
@@ -50,27 +97,52 @@
 
         ];
 
-        $(document).ready(function () {
+//        $(document).ready(function () {
+        var initialize = function () {
+            var LatLng = [
+                {Lat:43.799632, Lng:-79.517201},
+                {Lat:43.793506, Lng:-79.23994},
+                {Lat:43.710955, Lng:-79.28338},
+                {Lat:43.732221, Lng:-79.475403}
+            ];
+            var myLatlng = new google.maps.LatLng(43.734022, -79.333717);
+
+            var mapOptions = {
+                zoom: 12,
+                center: myLatlng,
+                disableDefaultUI: true
+            };
+
+            var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
             var getData = function () {
-                $.get('getOrganizationList').done(function(res) {
-                    console.log('getOrganizationList', res);
-                    res.forEach(function (item, i, arr) {
-                        $('#OrganizationList>ul').append(
-                            $('<li>').append(
-                                $('<a>').attr('href',item.group_id[0]).text(item.group_name[0])));
-                    });
-                }).fail(function (error) {
-                    console.error('error', error);
-                });
+//                $.get('getOrganizationList').done(function(res) {
+//                    console.log('getOrganizationList', res);
+//                    res.forEach(function (item, i, arr) {
+//                        $('#OrganizationList>ul').append(
+//                            $('<li>').append(
+//                                $('<a>').attr('href',item.group_id[0]).text(item.group_name[0])));
+//                    });
+//                }).fail(function (error) {
+//                    console.error('error', error);
+//                });
 
                 $.get('getAllDevices').done(function (res) {
                     devices_arr = res;
-                    // console.log('getAllDevices ', res);
+                    console.log('getAllDevices ', res);
                     res.forEach(function (item, i, arr) {
-                        var Device = new magic.MyDevice(item);
+//                        var Device = new magic.MyDevice(item);
                         // console.log('Device ', Device.deviceConnection);
-                        Device.createDeviceBlock(positions[i]);
+                        new magic.CustomMarker(
+                            new google.maps.LatLng(LatLng[i].Lat,LatLng[i].Lng),
+                            map,
+                            {
+                                marker_id: 'myMarker',
+                                color: 'red'
+                            },
+                            item
+                        );
+//                        Device.createDeviceBlock(positions[i]);
                     });
 
                 }).fail(function (error) {
@@ -80,7 +152,10 @@
 
             getData();
 //            setInterval(function(){getData()},10000);
-        });
+        };
+
+        google.maps.event.addDomListener(window, 'load', initialize);
     </script>
+
 </body>
 </html>

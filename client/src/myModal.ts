@@ -12,7 +12,7 @@ module magic{
 
         $modalBody: JQuery;
         $deviceModal: JQuery;
-        $сontentInfoModal: JQuery;
+        $contentInfoModal: JQuery;
         $imgThumb: JQuery;
 
         $modalFooter: JQuery;
@@ -43,8 +43,8 @@ module magic{
             this.$modalBody = $('<div>').addClass('modal-body').appendTo(this.$modalContent);
             this.$deviceModal = $('<div>').addClass('device_modal');
                 this.$deviceModal.append($('<h6>').text('DEVICE')).appendTo(this.$modalBody);
-            this.$сontentInfoModal = $('<div>').addClass('device_modal');
-                this.$сontentInfoModal.append($('<h6>').text('CONTENT')).appendTo(this.$modalBody);
+            this.$contentInfoModal = $('<div>').addClass('device_modal');
+                this.$contentInfoModal.append($('<h6>').text('CONTENT')).appendTo(this.$modalBody);
             let tb =  $('<div>').addClass('thumbview_box_modal device_thumb_modal');
             let dtiw =  $('<div>').addClass('dev_thumb_img_wrapper_modal');
             this.$imgThumb =  $('<div>').addClass('dev_img_thumb_modal').css("background-size", "auto 100%");
@@ -69,11 +69,11 @@ module magic{
                     if(key == 'contentLists'){
                         let contentLists = res[key][0].ContentList[0];
                         for (let key in contentLists){
-                            this.$сontentInfoModal.append($('<p>').text(key+': '+contentLists[key][0]));
+                            this.$contentInfoModal.append($('<p>').text(key+': '+contentLists[key][0]));
                         }
                         continue;
                     }
-                    this.$сontentInfoModal.append($('<p>').text(key+': '+res[key][0]));
+                    this.$contentInfoModal.append($('<p>').text(key+': '+res[key][0]));
                     // console.log('key', key);
                     // console.log('key[0]', this.device[key][0]);
                 }

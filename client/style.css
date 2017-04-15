@@ -1,3 +1,28 @@
+.myDevice{
+    border-radius: 5px;
+    position: absolute;
+    box-shadow: #767b8e 0 0 10px 1px;
+    background-color: grey;
+    cursor: pointer;
+    width: 150px;
+    height: 100px;
+}
+.img_wrapper{
+    display: table-cell;
+    background-image:url('/img/thumb_img_power.png');
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size:contain;
+    width: 150px;
+    height:84px;
+}
+.myLabel{
+    padding: 7px;
+    color: #fff;
+}
+
+
+
 
 body {
     background-image: url("img/bg.png");

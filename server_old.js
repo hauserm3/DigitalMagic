@@ -1,5 +1,3 @@
-/// <reference path="../../typings/express/express.d.ts" />
-/// <reference path="../../typings/body-parser/body-parser.d.ts" />
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
@@ -10,14 +8,11 @@ var http = require('http');
 var app = express();
 var parseString = require('xml2js').parseString;
 var path = require('path');
-var port = 5000;
 global.ROOT = __dirname;
 global.WWW = path.resolve(ROOT + '/client/');
 global.SERVER = path.resolve(ROOT + '/server/');
 //authorization
 var username = "admin", password = "DjGaZ8AIxTUrbJXIFH5Q";
-// let username = "BellCanada",
-//     password = "vIgU9N1u1X4c7w6Ry0";
 var auth = "Basic " + new Buffer(username + ":" + password).toString("base64");
 var token = '';
 var tokenTimestamp = 0;
@@ -79,7 +74,7 @@ app.use('/', bodyParser.json());
 // app.use('/api',require('./server/api/api_requests'));
 // app.get('/', function (req, res, next) {
 // //getAuthToken
-// //   let options = {
+// //   var options = {
 // //     host: '34.196.180.158',
 // //     port: 7001,
 // //     path: '/MagicInfo/openapi/getAuthToken',
@@ -96,7 +91,7 @@ app.use('/', bodyParser.json());
 // //     }
 // //   };
 // //
-// //   let http_req = http.request(options, function(response) {
+// //   var http_req = http.request(options, function(response) {
 // //     response.setEncoding('utf8');
 // //     let rawData = '';
 // //     response.on('data', function (chunk) {
@@ -123,6 +118,13 @@ app.get('/', function (req, res) {
     res.sendFile('index.html', { 'root': WWW });
 });
 app.get('/getAuthToken', getToken);
+// app.get('/dashboard', function (req: express.Request, res: express.Response) {
+//     res.sendFile('index.html',{'root':WWW});
+// });
+//
+// app.get('/dashboard/*', function (req: express.Request, res: express.Response) {
+//     res.sendFile('index.html',{'root':WWW});
+// });
 app.get('/getCategoryList', function (req, res) {
     var data = querystring.stringify({
         // _csrf:'b3862bdd-115d-4f28-b182-50dfe001e3f5',
@@ -425,7 +427,7 @@ app.get('/getAllDevices', function (req, res) {
     var data = querystring.stringify({
         service: 'PremiumDeviceService.getDeviceListWithDeviceType',
         token: token,
-        condition: '<DeviceCondition><groupId>69</groupId><statusViewMode>device_status_view_all</statusViewMode></DeviceCondition>',
+        condition: '<DeviceCondition><statusViewMode>device_status_view_all</statusViewMode></DeviceCondition>',
         deviceType: 'ALL'
     });
     var options = {
@@ -1164,7 +1166,7 @@ app.get('/getOrganizationList', function (req, res) {
     http_req.write(data);
     http_req.end();
 });
-app.listen(port, function () {
-    console.log('app listening on port ' + port + '! http://localhost:' + port + '/');
+app.listen(5000, function () {
+    console.log('app listening on port 5000! http://localhost:5000/');
 });
-//# sourceMappingURL=api_requests.js.map
+//# sourceMappingURL=server_old.js.map

@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@types/google-maps": "^3.2.0",
     "@types/jquery": "^2.0.41",
     "body-parser": "^1.15.1",
     "cookie-parser": "^1.4.2",
