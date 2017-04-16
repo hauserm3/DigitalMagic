@@ -2,13 +2,14 @@ import {token} from "./com/getToken";
  import * as querystring from 'querystring';
 import {myPost} from "./com/myPost";
 import {error} from "util";
-import {getAllDevices} from "./api/getAllDevices";
-import {getDevicePlayingContent} from "./api/getDevicePlayingContent";
-import {getDeviceThumbnail} from "./api/getDeviceThumbnail";
-import {ContentInfo, getContentInfo} from "./api/getContentInfo";
-import {getContentScheduleList, ScheduleList} from "./api/getContentScheduleList";
-import {getPlaylistActiveVerInfo, PlaylistActiveVerInfo} from "./api/getPlaylistActiveVerInfo";
-import {getContentListOfPlaylist} from "./api/getContentListOfPlaylist";
+import {getAllDevices} from "./apiSamsung/getAllDevices";
+import {getDevicePlayingContent} from "./apiSamsung/getDevicePlayingContent";
+import {getDeviceThumbnail} from "./apiSamsung/getDeviceThumbnail";
+import {ContentInfo, getContentInfo} from "./apiSamsung/getContentInfo";
+import {getContentScheduleList, ScheduleList} from "./apiSamsung/getContentScheduleList";
+import {getPlaylistActiveVerInfo, PlaylistActiveVerInfo} from "./apiSamsung/getPlaylistActiveVerInfo";
+import {getContentListOfPlaylist} from "./apiSamsung/getContentListOfPlaylist";
+import {getPlayingContent} from "./api/getPlayingContent";
 /**
  * Created by Vlad on 4/15/2017.
  */
@@ -24,33 +25,7 @@ export function initApi(app){
 
   app.get('/api/getPlayingContent/:deviceId', function (req, resp) {
     let deviceId = req.params.deviceId;
-
-      getDevicePlayingContent(deviceId).then(function (devicePlayingContent) {
-        getContentInfo(devicePlayingContent.contentId).then(function (contentInfo: ContentInfo) {
-            if(contentInfo.media_type == 'MOVIE') {
-                resp.send(contentInfo.media);
-            } else {
-                getContentScheduleList(devicePlayingContent.programId, devicePlayingContent.frameIndex)
-                  .then(function (scheduleList: ScheduleList) {
-                    getPlaylistActiveVerInfo(scheduleList.playlistId)
-                      .then(function (playlistActiveVerInfo: PlaylistActiveVerInfo) {
-                        getContentListOfPlaylist(playlistActiveVerInfo.playlistId, playlistActiveVerInfo.versionId)
-                          .then(function (res) {
-                            resp.send(res);
-                          });
-                      });
-                  });
-            }
-        });
-
-      console.log(devicePlayingContent);
-
-      resp.send(devicePlayingContent);
-    }).catch(function (error) {
-      resp.send(error)
-    });
-
-
+    getPlayingContent(deviceId, req, resp);
   });
 
   app.get('/api/getDeviceThumbnailURL/:deviceId', function (req, resp) {
@@ -62,18 +37,10 @@ export function initApi(app){
       resp.send(error)
     })
 
-  })
+  });
+
   app.get('/api/getCategoryList', function (req, res) {
     let service:'CommonContentService.getCategoryList';
-
-  });
-
-  app.get('/api/addContent', function (req, res) {
-
-  });
-
-  app.get('/api/downloadContent', function (req, res) {
-
 
   });
 
