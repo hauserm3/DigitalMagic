@@ -119,13 +119,10 @@ module magic {
         }
 
         draw() {
-            console.log('draw');
-
             if (!this.$view) {
                 this.$view = this.createDevice();
                 // this.div = this.createDiv();
                 // this.addEvent(this.div);
-                console.log('this.$view.get(0)', this.$view.get(0));
                 this.addDivToPanes(this.$view.get(0));
                 // this.setDeviceName();
             }
