@@ -24,36 +24,6 @@
     <script type="text/javascript" src="./src/myCustomGoogleMapMarker.js"></script>
     <script type="text/javascript">
 
-        function initialize2() {
-
-//            var myLatlng = new google.maps.LatLng(43.734022, -79.333717);
-//            var myLatlng2 = new google.maps.LatLng(43.714022, -79.333717);
-//            var mapOptions = {
-//                zoom: 12,
-//                center: myLatlng,
-//                disableDefaultUI: true
-//            };
-
-//            var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
-//            overlay = new magic.CustomMarker(
-//                myLatlng,
-//                map,
-//                {
-//                    marker_id: 'myMarker',
-//                    color: 'red'
-//                }
-//            );
-//            overlay2 = new magic.CustomMarker(
-//                myLatlng2,
-//                map,
-//                {
-//                    marker_id: 'myMarker2',
-//                    color: 'red'
-//                }
-//            );
-        }
-
     </script>
 
 </head>
@@ -127,10 +97,11 @@
 //                    console.error('error', error);
 //                });
 
-                $.get('getAllDevices').done(function (res) {
+                $.get('/api/getDevices/-1').done(function (res) {
                     devices_arr = res;
                     console.log('getAllDevices ', res);
-                    res.forEach(function (item, i, arr) {
+                    let devices = res.devices;
+                    devices.forEach(function (item, i, arr) {
 //                        var Device = new magic.MyDevice(item);
                         // console.log('Device ', Device.deviceConnection);
                         new magic.CustomMarker(

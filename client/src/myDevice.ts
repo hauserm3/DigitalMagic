@@ -86,8 +86,9 @@ module magic {
         }
 
         getThumbnail(){
+
             let device_id = this.deviceId;
-            $.get('getDeviceThumbnailURL' + '?device_id=' + device_id).done((res)=> {
+            $.get('api/getDeviceThumbnailURL' + '?device_id=' + device_id).done((res)=> {
                 // console.log('res', res);;
                 this.thumbDevice = res;
                 this.$thumb.css({

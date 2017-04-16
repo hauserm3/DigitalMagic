@@ -2,7 +2,7 @@
  * Created by админ on 24.03.2017.
  */
 
-class Content{
+export class Content{
     content_id: string;
     version_id: number;
     content_name: string;
@@ -10,7 +10,7 @@ class Content{
     thumb_file_name: string; // B-EmployeeWeather - Editable.LFD.PNG
 }
 
-class VOPlaylist{
+export class VOPlaylist{
     playlist_id: string;
     version_id: number;
     playlist_name: string;
@@ -21,7 +21,8 @@ class VOPlaylist{
     content_count: number;
 }
 
-class VOPlaylists{
+export class VOPlaylists{
     totalCount: number;
     playlists: VOPlaylist[];
 }
+

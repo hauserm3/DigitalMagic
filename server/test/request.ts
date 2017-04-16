@@ -5,7 +5,7 @@ var querystring = require('querystring');
 var http = require('http');
 
 //authorization
-var username = "admin",
+let username = "admin",
     password = "NBjMiXhl3tddjyD14Iwx";
 var auth = "Basic " + new Buffer(username + ":" + password).toString("base64");
 

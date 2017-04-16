@@ -72,7 +72,7 @@ var magic;
         MyDevice.prototype.getThumbnail = function () {
             var _this = this;
             var device_id = this.deviceId;
-            $.get('getDeviceThumbnailURL' + '?device_id=' + device_id).done(function (res) {
+            $.get('api/getDeviceThumbnailURL' + '?device_id=' + device_id).done(function (res) {
                 // console.log('res', res);;
                 _this.thumbDevice = res;
                 _this.$thumb.css({
