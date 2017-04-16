@@ -12,7 +12,7 @@ function getContentInfo(contentId) {
     return myPost_1.myPost(data).then(function (result) {
         console.log(result);
         var inf = {
-            type: result.response.responseClass[0].media_type[0],
+            media_type: result.response.responseClass[0].media_type[0],
             media: result.response.responseClass[0]
         };
         return inf;
@@ -22,10 +22,4 @@ function getContentInfo(contentId) {
     });
 }
 exports.getContentInfo = getContentInfo;
-var ContentInfo = (function () {
-    function ContentInfo() {
-    }
-    return ContentInfo;
-}());
-exports.ContentInfo = ContentInfo;
 //# sourceMappingURL=getContentInfo.js.map

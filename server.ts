@@ -18,10 +18,9 @@ const PLAYERS = require('./server/models/devices');
 console.log('PLAYERS', PLAYERS);
 
 app.use(express.static('client'));
-app.use(getToken);
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-
+app.use("/api",getToken);
 initApi(app);
 
 app.listen(port, function () {

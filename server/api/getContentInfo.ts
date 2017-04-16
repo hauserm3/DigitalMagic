@@ -11,8 +11,8 @@ export function getContentInfo(contentId):Promise<ContentInfo>{
   return myPost(data).then(function (result:any) {
     console.log(result);
     let inf = {
-      type:result.response.responseClass[0].media_type[0],
-      media:result.response.responseClass[0]
+        media_type:result.response.responseClass[0].media_type[0],
+        media:result.response.responseClass[0]
     }
     return inf;
 
@@ -24,7 +24,7 @@ export function getContentInfo(contentId):Promise<ContentInfo>{
   })
 }
 
-export class ContentInfo{
-  type:string;
-  media:string;
+export interface ContentInfo{
+    media_type:string;
+  media:any;
 }

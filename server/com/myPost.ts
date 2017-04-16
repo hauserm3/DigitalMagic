@@ -16,7 +16,7 @@ export function myPost(data){
     }
 
     data.token = token;
-   let payload =  querystring.stringify(data)
+   let payload =  querystring.stringify(data);
     let options = {
       host: '34.196.180.158',
       port: 7001,

@@ -15,9 +15,9 @@ var port = 5000;
 var PLAYERS = require('./server/models/devices');
 console.log('PLAYERS', PLAYERS);
 app.use(express.static('client'));
-app.use(getToken_1.getToken);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use("/api", getToken_1.getToken);
 initApi_1.initApi(app);
 app.listen(port, function () {
     console.log('app listening on port ' + port + '! http://localhost:' + port + '/');

@@ -3,8 +3,12 @@ import {token} from "./com/getToken";
 import {myPost} from "./com/myPost";
 import {error} from "util";
 import {getAllDevices} from "./api/getAllDevices";
-import {getPlayingContent} from "./api/getPlayingContent";
+import {getDevicePlayingContent} from "./api/getDevicePlayingContent";
 import {getDeviceThumbnail} from "./api/getDeviceThumbnail";
+import {ContentInfo, getContentInfo} from "./api/getContentInfo";
+import {getContentScheduleList, ScheduleList} from "./api/getContentScheduleList";
+import {getPlaylistActiveVerInfo, PlaylistActiveVerInfo} from "./api/getPlaylistActiveVerInfo";
+import {getContentListOfPlaylist} from "./api/getContentListOfPlaylist";
 /**
  * Created by Vlad on 4/15/2017.
  */
@@ -21,12 +25,27 @@ export function initApi(app){
   app.get('/api/getPlayingContent/:deviceId', function (req, resp) {
     let deviceId = req.params.deviceId;
 
-    getPlayingContent(deviceId).then(function (devicePlayingContent) {
-
+      getDevicePlayingContent(deviceId).then(function (devicePlayingContent) {
+        getContentInfo(devicePlayingContent.contentId).then(function (contentInfo: ContentInfo) {
+            if(contentInfo.media_type == 'MOVIE') {
+                resp.send(contentInfo.media);
+            } else {
+                getContentScheduleList(devicePlayingContent.programId, devicePlayingContent.frameIndex)
+                  .then(function (scheduleList: ScheduleList) {
+                    getPlaylistActiveVerInfo(scheduleList.playlistId)
+                      .then(function (playlistActiveVerInfo: PlaylistActiveVerInfo) {
+                        getContentListOfPlaylist(playlistActiveVerInfo.playlistId, playlistActiveVerInfo.versionId)
+                          .then(function (res) {
+                            resp.send(res);
+                          });
+                      });
+                  });
+            }
+        });
 
       console.log(devicePlayingContent);
 
-      resp.send(res);
+      resp.send(devicePlayingContent);
     }).catch(function (error) {
       resp.send(error)
     });

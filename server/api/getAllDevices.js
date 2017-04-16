@@ -10,7 +10,7 @@ function getAllDevices(req, response) {
         condition: '<DeviceCondition><statusViewMode>device_status_view_all</statusViewMode></DeviceCondition>',
         deviceType: 'ALL'
     };
-    myPost_1.myPost(payload).then(function (res) {
+    return myPost_1.myPost(payload).then(function (res) {
         //console.log(res);
         var out = {};
         out.devices = res.response.responseClass[0].resultList[0].Device;

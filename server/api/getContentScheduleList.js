@@ -12,7 +12,12 @@ function getContentScheduleList(programId, frameIndex) {
         ScheduleCondition: '<ScheduleCondition><pageSize>10</pageSize><startPos>1</startPos></ScheduleCondition>'
     };
     return myPost_1.myPost(data).then(function (res) {
-        return res.response.responseClass[0].resultList[0].ContentsScheduleEntity[0].content_id[0];
+        var data = {
+            data: res.response.responseClass[0],
+            list: res.response.responseClass[0].resultList[0],
+            playlistId: res.response.responseClass[0].resultList[0].ContentsScheduleEntity[0].content_id[0]
+        };
+        return data;
     });
 }
 exports.getContentScheduleList = getContentScheduleList;
