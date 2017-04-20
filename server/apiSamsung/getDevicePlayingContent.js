@@ -17,7 +17,7 @@ function getDevicePlayingContent(deviceId) {
             programId: data.programId[0],
             frameIndex: data.contentLists[0].ContentList[0].frameIndex[0]
         };
-        console.log(content);
+        // console.log(content);
         return content;
     });
 }

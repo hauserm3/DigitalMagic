@@ -11,6 +11,8 @@ function getDeviceThumbnail(deviceId) {
     };
     return myPost_1.myPost(data).then(function (result) {
         return result.response.responseClass[0]._;
+    }).catch(function (error) {
+        return error;
     });
 }
 exports.getDeviceThumbnail = getDeviceThumbnail;

@@ -69,7 +69,7 @@ let getToken = function (req, res, next) {
             // res.send(rawData);
             // console.log('end', rawData);
             parseString(rawData, function (err, result) {
-                console.log('result: ', result.response.responseClass[0]._);
+                // console.log('result: ', result.response.responseClass[0]._);
                 token = result.response.responseClass[0]._;
                 tokenTimestamp = Date.now();
                 // console.log('parseString', result.response.responseClass[0]._);

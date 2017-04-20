@@ -35,7 +35,7 @@ var magic;
             // let src_thumb2 = '&thumb_filename=';
             // let src_thumb3 = '_MEDIUM.PNG&width=100&height=56';
             var $myList = $("<ul>");
-            $.get('getPlayingContent' + '?deviceId=' + deviceId).done(function (res) {
+            $.get('/api/getPlayingContent/' + deviceId).done(function (res) {
                 if (res.length) {
                     console.log('ContentInfoArr', res);
                     res.forEach(function (item, i, arr) {

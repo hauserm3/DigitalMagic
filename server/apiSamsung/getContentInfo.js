@@ -10,7 +10,7 @@ function getContentInfo(contentId) {
         contentId: contentId
     };
     return myPost_1.myPost(data).then(function (result) {
-        console.log(result);
+        // console.log(result);
         var inf = {
             media_type: result.response.responseClass[0].media_type[0],
             media: result.response.responseClass[0]

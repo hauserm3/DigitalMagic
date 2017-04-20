@@ -30,7 +30,7 @@ export function myPost(data){
       }
     };
 
-    console.log(payload);
+    // console.log(payload);
     let http_req = http.request(options, function(response) {
       response.setEncoding('utf8');
       let rawData = '';

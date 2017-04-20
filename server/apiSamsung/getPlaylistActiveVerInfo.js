@@ -10,7 +10,7 @@ function getPlaylistActiveVerInfo(playlistId) {
         playlistId: playlistId
     };
     return myPost_1.myPost(data).then(function (result) {
-        console.log(result);
+        // console.log(result);
         var out = {
             playlistId: result.response.responseClass[0].playlist_id[0],
             versionId: result.response.responseClass[0].version_id[0]

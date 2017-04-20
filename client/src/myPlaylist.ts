@@ -41,7 +41,7 @@ module magic{
             // let src_thumb2 = '&thumb_filename=';
             // let src_thumb3 = '_MEDIUM.PNG&width=100&height=56';
             let $myList = $("<ul>");
-            $.get('getPlayingContent' + '?deviceId=' + deviceId).done((res)=> {
+            $.get('/api/getPlayingContent/' + deviceId).done((res)=> {
                 if(res.length){
                     console.log('ContentInfoArr', res);
                     res.forEach((item, i, arr) => {

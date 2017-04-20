@@ -12,7 +12,7 @@ let app = express();
 let parseString = require('xml2js').parseString;
 let path = require('path');
 
-const port: number = 5000;
+const port: number = 7001;
 
 const PLAYERS = require('./server/models/devices');
 console.log('PLAYERS', PLAYERS);
@@ -24,6 +24,5 @@ app.use("/api",getToken);
 initApi(app);
 
 app.listen(port, function () {
-
   console.log('app listening on port ' + port + '! http://localhost:' + port + '/');
 });

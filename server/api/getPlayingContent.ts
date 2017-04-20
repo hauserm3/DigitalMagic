@@ -28,10 +28,8 @@ export function getPlayingContent(deviceId, req, resp){
           });
       }
     });
-
-    console.log(devicePlayingContent);
-
-    resp.send(devicePlayingContent);
+    // console.log(devicePlayingContent);
+    // resp.send(devicePlayingContent);
   }).catch(function (error) {
     resp.send(error)
   });

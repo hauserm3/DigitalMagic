@@ -28,7 +28,7 @@ function myPost(data) {
                 'User-Agent': 'Mozilla/5.0'
             }
         };
-        console.log(payload);
+        // console.log(payload);
         var http_req = http.request(options, function (response) {
             response.setEncoding('utf8');
             var rawData = '';

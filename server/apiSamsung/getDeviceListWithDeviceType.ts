@@ -1,8 +1,6 @@
 import {myPost} from "../com/myPost";
-/**
- * Created by Vlad on 4/15/2017.
- */
-export function getAllDevices(req,response): Promise<any>{
+
+export function getDeviceListWithDeviceType(groupId, req,response): Promise<any>{
   let payload  = {
     service:'PremiumDeviceService.getDeviceListWithDeviceType',
     condition: '<DeviceCondition><statusViewMode>device_status_view_all</statusViewMode></DeviceCondition>',
@@ -13,10 +11,10 @@ export function getAllDevices(req,response): Promise<any>{
     //console.log(res);
     let out:any = {};
     out.devices = res.response.responseClass[0].resultList[0].Device;
-    console.log('getAllDevices');
-    response.send(out);
+    // console.log('getAllDevices');
+    return out;
   }).catch(function (err) {
     console.log(err);
-    response.send(err)
+    return err;
   });
 }

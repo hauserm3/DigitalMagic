@@ -20,7 +20,7 @@ export function getDevicePlayingContent(deviceId: number): Promise<DevicePlaying
       frameIndex: data.contentLists[0].ContentList[0].frameIndex[0]
     };
 
-    console.log(content);
+    // console.log(content);
     return content
   });
 
