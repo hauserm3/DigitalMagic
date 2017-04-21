@@ -51,6 +51,6 @@ export function myPost(data){
 
     http_req.write(payload);
     http_req.end();
-  })
+  });
 
 }

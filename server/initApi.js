@@ -8,6 +8,7 @@ var getDeviceThumbnail_1 = require("./apiSamsung/getDeviceThumbnail");
 var getPlayingContent_1 = require("./api/getPlayingContent");
 var getDeviceConnection_1 = require("./apiSamsung/getDeviceConnection");
 var getOrganizationList_1 = require("./apiSamsung/getOrganizationList");
+var getPlayingContentInfo_1 = require("./api/getPlayingContentInfo");
 /**
  * Created by Vlad on 4/15/2017.
  */
@@ -46,6 +47,10 @@ function initApi(app) {
         getOrganizationList_1.getOrganizationList().then(function (res) {
             resp.send(res);
         });
+    });
+    app.get('/api/getPlayingContentInfo/:deviceId', function (req, resp) {
+        var deviceId = req.params.deviceId;
+        getPlayingContentInfo_1.getPlayingContentInfo(deviceId, req, resp);
     });
 }
 exports.initApi = initApi;

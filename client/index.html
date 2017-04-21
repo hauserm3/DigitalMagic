@@ -4,21 +4,24 @@
 
     <title>DigitalMagic</title>
 
-    <link rel="stylesheet" href="./libs/bootstrap.min.css">
+    <link rel="stylesheet" href="./libs/b4/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="./libs/jquery-3.1.0.min.js"></script>
-    <script src="./libs/bootstrap.min.js"></script>
+    <script src="./libs/b4/bootstrap.min.js"></script>
     <script src="./src/toolTip.js"></script>
 
-    <style type="text/css">
+    <!--<style type="text/css">-->
 
-        #map-canvas {
-            height: 900px;
-            width: 100%;
-        }
+    <!--#map-canvas {-->
+    <!--/*width: 100%;*/-->
+    <!--/*height: 900px;*/-->
+    <!--width: 1280px;-->
+    <!--height: 720px;-->
+    <!--margin: auto;-->
+    <!--}-->
 
-    </style>
+    <!--</style>-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYZoEBypb8_mF2GLqrvDE1BrdPQ6aSu8Q"></script>
     <script type="text/javascript" src="./src/myCustomGoogleMapMarker.js"></script>
     <script type="text/javascript">
@@ -27,18 +30,33 @@
 
 </head>
 <body>
-<div id="MyBackround">
-    <div id="MyContainer">
-        <div id="OrganizationList" class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                Organization List <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu"></ul>
+<!--<div id="MyBackround">-->
+<div id="MyContainer">
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="OrganizationList" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Organization List </a>
+                    <div class="dropdown-menu" aria-labelledby="OrganizationList">
+                        <!--<a class="dropdown-item" href="#">Action</a>-->
+                        <!--<a class="dropdown-item" href="#">Another action</a>-->
+                        <!--<a class="dropdown-item" href="#">Something else here</a>-->
+                    </div>
+                </li>
+            </ul>
         </div>
-        <div id="map-canvas"></div>
-        <!--<img src="img/toronto.png">-->
-    </div>
+        <h1 class="text-primary">HEROTECH</h1>
+    </nav>
+    <!--<div id="OrganizationList" class="dropdown">-->
+        <!--<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">-->
+            <!--Organization List <span class="caret"></span>-->
+        <!--</button>-->
+        <!--<ul class="dropdown-menu"></ul>-->
+    <!--</div>-->
+    <div id="map-canvas"></div>
+    <!--<img src="img/toronto.png">-->
 </div>
+<!--</div>-->
 <div id="floatTip"></div>
 
 
@@ -49,18 +67,18 @@
     var devices_arr;
     var globalDispather$ = $({});
     var modal;
-    globalDispather$.on('thumbClick',function (evt, obj) {
-        if(modal) modal.$view.remove();
+    globalDispather$.on('thumbClick', function (evt, obj) {
+        if (modal) modal.$view.remove();
         modal = new magic.MyModal(obj);
         $('body').append(modal.$view);
         modal.$view.fadeIn('fast');
-        modal.$view.on('click',function (evt) {
+        modal.$view.on('click', function (evt) {
             var target = $(evt.target);
 //            console.log('targget', target.hasClass('close'));
             console.log('targget', target);
 //            if(target.attr('id','Modal') || target.hasClass('close')){
-            if(target.hasClass('close') || target.hasClass('modal')){
-                modal.$view.fadeOut('fast',function () {
+            if (target.hasClass('close') || target.hasClass('modal')) {
+                modal.$view.fadeOut('fast', function () {
                     modal.$view.remove();
                 });
             }
@@ -106,12 +124,22 @@
         var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
         var getData = function () {
+//            $.get('/api/getOrganizationList').done(function (res) {
+//                console.log('getOrganizationList', res);
+//                res.forEach(function (item, i, arr) {
+//                    $('#OrganizationList>ul').append(
+//                        $('<li>').append(
+//                            $('<a>').attr('href', item.group_id[0]).text(item.group_name[0] + ' (id=' + item.group_id[0] + ')')));
+//                });
+//            }).fail(function (error) {
+//                console.error('error', error);
+//            });
+
             $.get('/api/getOrganizationList').done(function (res) {
                 console.log('getOrganizationList', res);
                 res.forEach(function (item, i, arr) {
-                    $('#OrganizationList>ul').append(
-                        $('<li>').append(
-                            $('<a>').attr('href', item.group_id[0]).text(item.group_name[0]+' (id='+item.group_id[0]+')')));
+                    $('.dropdown-menu').append(
+                            $('<a>').addClass('dropdown-item').attr('href', item.group_id[0]).text(item.group_name[0] + ' (id=' + item.group_id[0] + ')'));
                 });
             }).fail(function (error) {
                 console.error('error', error);
@@ -133,7 +161,7 @@
                         },
                         item
                     );
-                    google.maps.event.addListener(myMarker, 'click', function() {
+                    google.maps.event.addListener(myMarker, 'click', function () {
                         console.log('arg', arguments);
 //                        map.setCenter(RdrMarker.getPosition());
 //                        infowindow.setContent(contentStringRdr);

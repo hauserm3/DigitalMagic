@@ -11,6 +11,7 @@ import {getPlaylistActiveVerInfo, PlaylistActiveVerInfo} from "./apiSamsung/getP
 import {getPlayingContent} from "./api/getPlayingContent";
 import {getDeviceConnection} from "./apiSamsung/getDeviceConnection";
 import {getOrganizationList} from "./apiSamsung/getOrganizationList";
+import {getPlayingContentInfo} from "./api/getPlayingContentInfo";
 /**
  * Created by Vlad on 4/15/2017.
  */
@@ -56,5 +57,10 @@ export function initApi(app) {
     getOrganizationList().then(function (res) {
       resp.send(res);
     });
+  });
+
+  app.get('/api/getPlayingContentInfo/:deviceId', function (req, resp) {
+    let deviceId = req.params.deviceId;
+    getPlayingContentInfo(deviceId, req, resp);
   });
 }

@@ -5,7 +5,7 @@ var magic;
         function MyPlaylist(device) {
             this.device = device;
             this.device = device;
-            this.$view = $('<div>').addClass('playlist_editer_wrap');
+            this.$view = $('<div>').addClass('playlist_editer_wrap text-center');
             this.$listConteiner = $('<div>').addClass('scrolling').appendTo(this.$view);
             // this.hidePlaylist();
             this.getPlayingContent(device.device_id[0]);
