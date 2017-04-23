@@ -5,17 +5,21 @@ var http = require("http");
 var tokenTimestamp = 0;
 exports.username = "admin";
 var password = "DjGaZ8AIxTUrbJXIFH5Q";
+var interval = 10 * 60 * 1000;
 // let username = "BellCanada",
 //     password = "vIgU9N1u1X4c7w6Ry0";
 var auth = "Basic " + new Buffer(exports.username + ":" + password).toString("base64");
 function getToken(req, respnse, next) {
-    if (Date.now() - tokenTimestamp > 10 * 60 * 1000) {
-        exports.token = null;
-    }
-    if (exports.token) {
-        next();
+    if (req) {
+        if (!exports.token)
+            respnse.status(503).send('cant get token');
+        else
+            next();
         return;
     }
+    /* if(Date.now()-tokenTimestamp > 10*60*1000){
+       token = null;
+     }*/
     console.log(' requesting token ');
     var options = {
         host: '34.196.180.158',
@@ -46,29 +50,34 @@ function getToken(req, respnse, next) {
             parseString_1.parseString(rawData, function (err, result) {
                 if (err) {
                     console.log(err);
-                    respnse.status(500).send(err);
+                    //respnse.status(500).send(err);
                     return;
                 }
                 if (result.response && Array.isArray(result.response.responseClass) && result.response.responseClass[0]._) {
                     exports.token = result.response.responseClass[0]._;
                     console.log('token: ', exports.token);
                     tokenTimestamp = Date.now();
-                    next();
+                    // next();
                 }
                 else {
-                    console.log(result);
-                    respnse.status(500).send('cant get token');
+                    exports.token = null;
+                    console.error(result);
+                    // respnse.status(500).send('cant get token');
                 }
             });
         }).on('error', function (err) {
+            exports.token = null;
             console.error('error in response getToken', err);
         });
     });
     http_req.on('error', function (err) {
+        exports.token = null;
         console.error('error getToken', err);
     });
     // console.log('getTokenFunc');
     http_req.end();
 }
 exports.getToken = getToken;
+setInterval(function () { return getToken(); }, interval);
+getToken();
 //# sourceMappingURL=getToken.js.map
