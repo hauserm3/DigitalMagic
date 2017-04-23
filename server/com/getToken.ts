@@ -73,10 +73,13 @@ export function getToken(req, respnse, next){
       });
 
     }).on('error', function(err) {
-      console.error(err);
+      console.error('error getToken',err);
     });
   });
 
+  http_req.on('error', function (err) {
+    console.error('error getToken',err);
+  })
   // console.log('getTokenFunc');
   http_req.end();
 }

@@ -43,8 +43,11 @@ function myPost(data) {
                 // console.log('rawData', rawData);
             }).on('error', function (err) {
                 reject(err);
-                //console.error(err);
+                console.error('error myPost ', err);
             });
+        });
+        http_req.on('error', function (err) {
+            console.error('error myPost ', err);
         });
         http_req.write(payload);
         http_req.end();

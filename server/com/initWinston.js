@@ -5,10 +5,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var fs = require("fs");
 function initWinston(options) {
-    /*   env.forEach(function (val, index, array) {
-       console.log(index + ': ' + val);
-   });*/
-    var dir = './logs';
+    var dir = options.dir || './logs';
     if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir);
     }
@@ -33,8 +30,8 @@ function initWinston(options) {
         ]
     });
     logger.info(options);
-    if (options.env === 'prod') {
-        winston.handleExceptions(new winston.transports.File({ filename: 'logs/exceptions.log' }));
+    if (options.env === 'production') {
+        winston.handleExceptions(new winston.transports.File({ filename: dir + '/exceptions.log' }));
         console.log = logger.info;
         console.error = logger.error;
     }
