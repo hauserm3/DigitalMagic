@@ -1,6 +1,8 @@
 ///<reference path="index.d.ts"/>
+import {MyPlaylist} from "./myPlaylist";
+import {MyModal} from "./myModal";
 declare var globalDispather$: JQuery;
-module magic {
+
   export class CustomMarker extends google.maps.OverlayView {
 
     // latlng: google.maps.LatLng;
@@ -185,7 +187,7 @@ module magic {
       console.error(error);
     }
   }
-}
+
 
 // function CustomMarker(latlng, map, args) {
 //     this.latlng = latlng;

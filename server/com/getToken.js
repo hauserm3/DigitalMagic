@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var parseString_1 = require("./parseString");
 var http = require("http");
 var tokenTimestamp = 0;

@@ -1,10 +1,6 @@
-///<reference path="index.d.ts"/>
 
-module magic{
-    export class MyPlaylist{
-
+export class MyPlaylist{
         visible: boolean;
-
         $view: JQuery;
         $list: JQuery;
         $listConteiner: JQuery;
@@ -92,5 +88,4 @@ module magic{
             let p = $('<p>').addClass('name').appendTo(div);
             $('<span>').addClass('name text-overflow').text(playingContent.content_name[0]).appendTo(p);
         }
-    }
 }

@@ -2,7 +2,7 @@
  * Created by админ on 17.04.2017.
  */
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var getContentScheduleList_1 = require("../apiSamsung/getContentScheduleList");
 var getContentInfo_1 = require("../apiSamsung/getContentInfo");
 var getDevicePlayingContent_1 = require("../apiSamsung/getDevicePlayingContent");
@@ -29,7 +29,7 @@ function getPlayingContent(deviceId, req, resp) {
         });
         // console.log(devicePlayingContent);
         // resp.send(devicePlayingContent);
-    }).catch(function (error) {
+    })["catch"](function (error) {
         resp.send(error);
     });
 }

@@ -1,6 +1,6 @@
-///<reference path="index.d.ts"/>
 
-module magic {
+  import {MyPlaylist} from "./myPlaylist";
+
   export class MyModal {
 
     visible: boolean;
@@ -146,7 +146,7 @@ module magic {
       }
     }
 
-    setModalThumb() {
+    setModalThumb(par?:any) {
       $.get('/api/getDeviceThumbnailURL/' + this.deviceId).done((res) => {
         // console.log('res', res);
         this.thumbDevice = res.substr(0, res.length - 11);
@@ -162,4 +162,3 @@ module magic {
       console.error(error);
     }
   }
-}
