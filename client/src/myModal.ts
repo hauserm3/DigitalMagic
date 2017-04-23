@@ -40,7 +40,7 @@ module magic {
       // this.setModalDevicePlayingContentInfo();
       this.setModalPlayingContentInfo();
       this.setModalThumb();
-      setInterval(()=>{this.setModalThumb();this.setModalPlayingContentInfo();},5000);
+      setInterval(()=>{this.setModalThumb();this.setModalPlayingContentInfo(); this.setModalDevicePlayingContentInfo()},5000);
     }
 
     init() {

@@ -11,7 +11,7 @@ var fs = require('fs');
 var app = express();
 var parseString = require('xml2js').parseString;
 var path = require('path');
-var port = 7001;
+var port = 8989;
 var PLAYERS = require('./server/models/devices');
 console.log('PLAYERS', PLAYERS);
 app.use(express.static('client'));

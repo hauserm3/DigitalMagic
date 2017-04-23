@@ -1,4 +1,4 @@
-.myDevice{
+.myDevice {
     border-radius: 5px;
     position: absolute;
     box-shadow: #767b8e 0 0 10px 1px;
@@ -7,36 +7,39 @@
     width: 150px;
     height: 100px;
 }
-.img_wrapper{
+
+.img_wrapper {
     display: table-cell;
-    background-image:url('/img/thumb_img_power.png');
+    background-image: url('/img/thumb_img_power.png');
     background-repeat: no-repeat;
-    background-position:center;
-    background-size:contain;
+    background-position: center;
+    background-size: contain;
     width: 150px;
-    height:84px;
+    height: 84px;
 }
-.myLabel{
+
+.myLabel {
     padding: 7px;
     color: #fff;
 }
 
-.modal{
-    background-color: rgba(0,0,0,0.5);
+.modal {
+    background-color: rgba(0, 0, 0, 0.5);
 }
-
 
 body {
     background-image: url("img/bg.png");
     /*background-repeat: no-repeat;*/
     /*background-position: left top;*/
 }
+
 #MyBackround {
     position: absolute;
     width: 100%;
     height: 100%;
 }
-#MyContainer{
+
+#MyContainer {
     position: absolute;
     left: 0;
     top: 0;
@@ -45,6 +48,7 @@ body {
     /*width: 1600px;*/
     /*width: 1250px;*/
 }
+
 #map-canvas {
     /*width: 100%;*/
     /*height: 900px;*/
@@ -54,15 +58,25 @@ body {
     top: 80px;
 }
 
+.card_marker {
+    width: 150px;
+}
+.card_marker > img {
+    height: 84px;
+}
+.card_marker > .card-block {
+    padding: 10px 10px;
+}
+
 /*-------Thumbnnail Device---------*/
-.thumbview_wrapper{
-    width:150px;
+.thumbview_wrapper {
+    width: 150px;
 }
 
 .thumbview_wrapper .thumbview_box.device_thumb {
     display: table-cell;
-    width:150px;
-    height:84px;
+    width: 150px;
+    height: 84px;
 }
 
 .thumbview_wrapper .thumbview_box.device_thumb {
@@ -93,19 +107,21 @@ body {
     border-radius: 5px 5px 0 0;
 }
 
-.dev_img_thumb{
-    background-image:url('/img/thumb_img_power.png');
+.dev_img_thumb {
+    background-image: url('/img/thumb_img_power.png');
     background-repeat: no-repeat;
-    background-position:center;
-    background-size:contain;
+    background-position: center;
+    background-size: contain;
     /*background-size:100% 100%;*/
-    display:inline-block;
+    display: inline-block;
 }
+
 /*-------End Thumbnnail Device---------*/
 
 .active .bg_babcbc {
     background: #e6b280;
 }
+
 .bg_babcbc {
     background: #babcbc;
 }
@@ -117,9 +133,11 @@ body {
     border-radius: 0 0 5px 5px;
     /*height: 55px;*/
 }
+
 .status_wrap > span.dev_name {
     font-size: 11px;
 }
+
 .status_wrap > span {
     display: inline-block;
     font-size: 11px;
@@ -129,8 +147,7 @@ body {
     width: 100%;
 }
 
-
-.device{
+.device {
     /*width: 100px;*/
     /*height: 100px;*/
     /*background-color: green;*/
@@ -140,11 +157,11 @@ body {
     /*box-shadow: #dfe 0 0 10px 1px;*/
 }
 
-.deviceInfo{
+.deviceInfo {
     background-color: #736767;
 }
 
-.playlist_editer_wrap{
+.playlist_editer_wrap {
     /*position: relative;*/
     width: 765px;
     background-color: aqua;
@@ -167,12 +184,12 @@ body {
     /*left: 30px;*/
     /*max-width: 100px;*/
     border-radius: 5px;
-    height: 160px;
+    /*height: 160px;*/
     text-align: center;
 }
 
-.scrolling ul ,
-.noscrolling ul{
+.scrolling ul,
+.noscrolling ul {
     white-space: nowrap;
     padding-left: 0;
     padding-bottom: 0;
@@ -200,19 +217,20 @@ body {
 
 /*.playlist_editer_wrap .scrolling li > div > img,*/
 /*.playlist_editer_wrap .noscrolling li > div > img{*/
-    /*width: 78px;*/
-    /*height: 78px;*/
-    /*border: 4px solid #fff;*/
-    /*box-shadow: 0px 1px 0px #e7e7e7;*/
+/*width: 78px;*/
+/*height: 78px;*/
+/*border: 4px solid #fff;*/
+/*box-shadow: 0px 1px 0px #e7e7e7;*/
 /*}*/
 
 .scrolling ul li > div,
-.noscrolling ul li > div{
+.noscrolling ul li > div {
     /*height: 136px;*/
     float: left;
     position: relative;
     width: 86px;
 }
+
 .scrolling ul li > div > img,
 .noscrolling ul li > div > img {
     /*max-width: 78px;*/
@@ -230,6 +248,7 @@ body {
     width: 80px;
     /* line-height: 22px; */
 }
+
 .text-overflow {
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -256,8 +275,8 @@ body {
 
 .thumbview_box.device_thumb_modal {
     display: table-cell;
-    width:500px;
-    height:300px;
+    width: 500px;
+    height: 300px;
 }
 
 .thumbview_wrapper_modal .thumbview_box_modal.device_thumb_modal {
@@ -288,22 +307,22 @@ body {
     border-radius: 5px 5px 0 0;
 }
 
-.dev_img_thumb_modal{
+.dev_img_thumb_modal {
     background-repeat: no-repeat;
-    background-position:center;
-    background-size:contain;
+    background-position: center;
+    background-size: contain;
     /*background-size:100% 100%;*/
-    display:inline-block;
+    display: inline-block;
 }
 
 .thumbview_box_modal.device_thumb_modal {
     /*display: table-cell;*/
-    width:540px;
-    height:300px;
+    width: 540px;
+    height: 300px;
     margin: auto;
 }
 
-.device_modal{
+.device_modal {
     height: 200px; /* высота нашего блока */
     width: 350px; /* ширина нашего блока */
     background: #fff; /* цвет фона, белый */
@@ -317,10 +336,10 @@ body {
 }
 
 /*.device_modal>select{*/
-    /*overflow-x: auto;*/
+/*overflow-x: auto;*/
 /*}*/
 
-.device_modal > p{
+.device_modal > p {
     margin: 0;
     color: darkred;
 }

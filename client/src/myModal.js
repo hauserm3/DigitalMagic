@@ -17,7 +17,7 @@ var magic;
             // this.setModalDevicePlayingContentInfo();
             this.setModalPlayingContentInfo();
             this.setModalThumb();
-            setInterval(function () { _this.setModalThumb(); _this.setModalPlayingContentInfo(); }, 5000);
+            setInterval(function () { _this.setModalThumb(); _this.setModalPlayingContentInfo(); _this.setModalDevicePlayingContentInfo(); }, 5000);
         }
         MyModal.prototype.init = function () {
             // this.$thumb = $('<div>').addClass('dev_img_thumb').attr('data-toggle', 'modal').attr('data-target','#Modal');

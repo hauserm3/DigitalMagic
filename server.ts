@@ -12,7 +12,7 @@ let app = express();
 let parseString = require('xml2js').parseString;
 let path = require('path');
 
-const port: number = 7001;
+const port: number = 8989;
 
 const PLAYERS = require('./server/models/devices');
 console.log('PLAYERS', PLAYERS);
