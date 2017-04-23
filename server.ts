@@ -3,10 +3,13 @@ import * as express from "express";
 import * as bodyParser from "body-parser";
 import {getToken} from "./server/com/getToken";
 import {initApi} from "./server/initApi";
+import {initWinston} from "./server/com/initWinston";
 // let express = require('express');
 let querystring = require('querystring');
 let http = require('http');
 let fs = require('fs');
+
+initWinston({env:'prod'});
 let app = express();
 
 let parseString = require('xml2js').parseString;
