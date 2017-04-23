@@ -9,7 +9,11 @@ let querystring = require('querystring');
 let http = require('http');
 let fs = require('fs');
 
-initWinston({env:'prod'});
+process.on('uncaughtException', function (err) {
+  console.error('uncaughtException', err);
+});
+
+initWinston({env:'!production'});
 let app = express();
 
 let parseString = require('xml2js').parseString;

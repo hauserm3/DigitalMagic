@@ -7,11 +7,7 @@ import * as fs from 'fs';
 export function initWinston(options){
 
 
-
-     /*   env.forEach(function (val, index, array) {
-        console.log(index + ': ' + val);
-    });*/
-  let dir = './logs';
+  let dir = options.dir || './logs';
 
   if (!fs.existsSync(dir)){
     fs.mkdirSync(dir);
@@ -42,8 +38,9 @@ export function initWinston(options){
 
     logger.info(options);
 
-    if(options.env ==='prod'){
-        winston.handleExceptions(new winston.transports.File({ filename: 'logs/exceptions.log' }));
+    if(options.env ==='production'){
+
+      winston.handleExceptions(new winston.transports.File({ filename: dir + '/exceptions.log' }));
         console.log = logger.info;
         console.error = logger.error;
     }

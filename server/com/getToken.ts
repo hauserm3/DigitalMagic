@@ -11,19 +11,28 @@ let tokenTimestamp = 0;
 export let username = "admin";
 
 let password = "DjGaZ8AIxTUrbJXIFH5Q";
+let interval =  10*60*1000;
 // let username = "BellCanada",
 //     password = "vIgU9N1u1X4c7w6Ry0";
+
 let auth = "Basic " + new Buffer(username + ":" + password).toString("base64");
 
-export function getToken(req, respnse, next){
-  if(Date.now()-tokenTimestamp > 10*60*1000){
-    token = null;
+export function getToken(req?, respnse?, next?){
+
+  if(req){
+    if(!token)  respnse.status(503).send('cant get token');
+    else  next();
+    return
   }
 
-  if(token){
-    next();
-    return;
-  }
+
+ /* if(Date.now()-tokenTimestamp > 10*60*1000){
+    token = null;
+  }*/
+
+
+
+  console.log(' requesting token ');
 
   const options = {
     host: '34.196.180.158',
@@ -57,26 +66,35 @@ export function getToken(req, respnse, next){
 
         if(err){
           console.log(err);
-          respnse.status(500).send(err);
+          //respnse.status(500).send(err);
           return
         }
         if(result.response && Array.isArray(result.response.responseClass) && result.response.responseClass[0]._){
           token = result.response.responseClass[0]._;
           console.log('token: ', token);
           tokenTimestamp = Date.now();
-          next();
+         // next();
         }else  {
-          console.log(result)
-          respnse.status(500).send('cant get token');
+          token = null;
+          console.error(result)
+         // respnse.status(500).send('cant get token');
         }
 
       });
 
     }).on('error', function(err) {
-      console.error(err);
+      token = null
+      console.error('error in response getToken',err);
     });
   });
 
+  http_req.on('error', function (err) {
+    token = null;
+    console.error('error getToken',err);
+  })
   // console.log('getTokenFunc');
   http_req.end();
 }
+
+setInterval(()=>getToken(),interval);
+getToken();

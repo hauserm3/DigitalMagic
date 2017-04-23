@@ -9,7 +9,10 @@ var initWinston_1 = require("./server/com/initWinston");
 var querystring = require('querystring');
 var http = require('http');
 var fs = require('fs');
-initWinston_1.initWinston({ env: 'prod' });
+process.on('uncaughtException', function (err) {
+    console.error('uncaughtException', err);
+});
+initWinston_1.initWinston({ env: '!production' });
 var app = express();
 var parseString = require('xml2js').parseString;
 var path = require('path');
