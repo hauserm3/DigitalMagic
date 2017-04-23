@@ -13,9 +13,12 @@ export let username = "admin";
 let password = "DjGaZ8AIxTUrbJXIFH5Q";
 // let username = "BellCanada",
 //     password = "vIgU9N1u1X4c7w6Ry0";
+
 let auth = "Basic " + new Buffer(username + ":" + password).toString("base64");
 
 export function getToken(req, respnse, next){
+
+
   if(Date.now()-tokenTimestamp > 10*60*1000){
     token = null;
   }
@@ -24,6 +27,8 @@ export function getToken(req, respnse, next){
     next();
     return;
   }
+
+  console.log(' requesting token ');
 
   const options = {
     host: '34.196.180.158',
@@ -73,7 +78,7 @@ export function getToken(req, respnse, next){
       });
 
     }).on('error', function(err) {
-      console.error('error getToken',err);
+      console.error('error in response getToken',err);
     });
   });
 

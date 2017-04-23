@@ -16,6 +16,7 @@ function getToken(req, respnse, next) {
         next();
         return;
     }
+    console.log(' requesting token ');
     var options = {
         host: '34.196.180.158',
         port: 7001,
@@ -60,7 +61,7 @@ function getToken(req, respnse, next) {
                 }
             });
         }).on('error', function (err) {
-            console.error('error getToken', err);
+            console.error('error in response getToken', err);
         });
     });
     http_req.on('error', function (err) {
