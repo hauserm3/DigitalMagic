@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var myPost_1 = require("../com/myPost");
 function getDeviceConnection(deviceId) {
     var payload = {
@@ -11,9 +11,8 @@ function getDeviceConnection(deviceId) {
         var deviceConnectionEntity = result.response.responseClass[0]._;
         // console.log('deviceConnectionEntity ', deviceConnectionEntity);
         return deviceConnectionEntity;
-    })["catch"](function (error) {
+    }).catch(function (error) {
         return error;
     });
 }
 exports.getDeviceConnection = getDeviceConnection;
-//# sourceMappingURL=getDeviceConnection.js.map

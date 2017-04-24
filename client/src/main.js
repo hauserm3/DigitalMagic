@@ -2,7 +2,7 @@
  * Created by Vlad on 4/23/2017.
  */
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var myModal_1 = require("./myModal");
 var myCustomGoogleMapMarker_1 = require("./myCustomGoogleMapMarker");
 var devices_arr;
@@ -106,4 +106,3 @@ var initialize = function () {
     //            setInterval(function(){getData()},10000);
 };
 google.maps.event.addDomListener(window, 'load', initialize);
-//# sourceMappingURL=main.js.map

@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var myPost_1 = require("../com/myPost");
 /**
  * Created by Vlad on 4/16/2017.
@@ -16,10 +16,9 @@ function getPlaylistActiveVerInfo(playlistId) {
             versionId: result.response.responseClass[0].version_id[0]
         };
         return out;
-    })["catch"](function (error) {
+    }).catch(function (error) {
         console.log(error);
         return error;
     });
 }
 exports.getPlaylistActiveVerInfo = getPlaylistActiveVerInfo;
-//# sourceMappingURL=getPlaylistActiveVerInfo.js.map

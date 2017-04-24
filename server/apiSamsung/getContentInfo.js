@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var myPost_1 = require("../com/myPost");
 /**
  * Created by Vlad on 4/16/2017.
@@ -16,10 +16,9 @@ function getContentInfo(contentId) {
             media: result.response.responseClass[0]
         };
         return inf;
-    })["catch"](function (error) {
+    }).catch(function (error) {
         console.log(error);
         return error;
     });
 }
 exports.getContentInfo = getContentInfo;
-//# sourceMappingURL=getContentInfo.js.map

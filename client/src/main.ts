@@ -7,7 +7,7 @@ import {MyDevice} from './myDevice';
 import {MyModal} from "./myModal";
 import {CustomMarker} from "./myCustomGoogleMapMarker";
 
-declare var globalDispather$:JQuery
+declare var globalDispather$:JQuery;
 var devices_arr;
 
 var modal;

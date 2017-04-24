@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var parseString_1 = require("./parseString");
 var getToken_1 = require("./getToken");
 var Promise = require("bluebird");
@@ -54,4 +54,3 @@ function myPost(data) {
     });
 }
 exports.myPost = myPost;
-//# sourceMappingURL=myPost.js.map

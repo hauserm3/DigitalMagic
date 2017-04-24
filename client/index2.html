@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+    <title>DigitalMagic2</title>
+
+    <script src="./libs/jquery-3.1.0.min.js"></script>
+    <script src="./libs/mustache.js"></script>
+
+</head>
+<body>
+
+<script>
+    var view = {
+        title: "Joe",
+        calc: function () {
+            return 2 + 4;
+        }
+    };
+
+    var output = Mustache.render("{{title}} spends {{calc}}", view);
+
+    console.log('output', output);
+///////////////////////////////////////////////////////
+
+    var  data = {
+        "header": "Colors",
+        "items": [
+            {"name": "red", "first": true, "url": "#Red"},
+            {"name": "green", "link": true, "url": "#Green"},
+            {"name": "blue", "link": true, "url": "#Blue"}
+        ],
+        "empty": false
+    };
+
+    var template = '<h1>{{header}}</h1>' +
+                    '{{#bug}}{{/bug}}' +
+                    '{{#items}}' +
+                    '{{#first}}<li><strong>{{name}}</strong></li>{{/first}}' +
+                    '{{#link}}<li><a href="{{url}}">{{name}}</a></li>{{/link}}{{/items}}' +
+                    '{{#empty}}<p>The list is empty.</p>{{/empty}}';
+    console.log(Mustache.render(template, data));
+</script>
+
+<!--   ---------------------------    -->
+<div id="target">Loading...</div>
+<script id="template" type="x-tmpl-mustache">
+Hello {{ name }}!
+</script>
+
+<script>
+    function loadUser() {
+        var template = $('#template').html();
+        console.log('template', template);
+        Mustache.parse(template);   // optional, speeds up future uses
+        var rendered = Mustache.render(template, {name: "Luke"});
+        console.log('rendered', rendered);
+        $('#target').html(rendered);
+    }
+</script>
+
+<script>
+    $(document).ready(loadUser());
+</script>
+
+</body>
+</html>
+
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<title>Mustache.js External Method</title>-->
+    <!--<script src="./libs/jquery-3.1.0.min.js" ></script>-->
+    <!--<script src="./libs/mustache.js" ></script>-->
+    <!--<script>-->
+        <!--$(document).ready(function(){-->
+            <!--var view = {-->
+                <!--name : "Joe",-->
+                <!--occupation : "Web Developer"-->
+            <!--};-->
+            <!--$("#templates").load("template.html #template1",function(){-->
+                <!--var template = document.getElementById('template1').innerHTML;-->
+                <!--var output = Mustache.render(template, view);-->
+                <!--$("#person").html(output);-->
+            <!--});-->
+        <!--});-->
+    <!--</script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<p id="person"></p>-->
+<!--<div id="templates" style="display: none;"></div>-->
+<!--<div id="template1" >-->
+    <!--<h1>{{name}}</h1>-->
+<!--</div>-->
+<!--<div id="template2" >-->
+    <!--<div>{{name}}</div>-->
+<!--</div>-->
+<!--<div id="template3" >-->
+    <!--<p><span>{{name}}</span></p>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->

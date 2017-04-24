@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 // import * as querystring from 'querystring';
 // import {error} from "util";
 var getAllDevices_1 = require("./api/getAllDevices");
@@ -54,4 +54,3 @@ function initApi(app) {
     });
 }
 exports.initApi = initApi;
-//# sourceMappingURL=initApi.js.map

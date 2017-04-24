@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var myPost_1 = require("../com/myPost");
 /**
  * Created by Vlad on 4/16/2017.
@@ -21,4 +21,3 @@ function getContentScheduleList(programId, frameIndex) {
     });
 }
 exports.getContentScheduleList = getContentScheduleList;
-//# sourceMappingURL=getContentScheduleList.js.map

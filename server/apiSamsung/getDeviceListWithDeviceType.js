@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var myPost_1 = require("../com/myPost");
 function getDeviceListWithDeviceType(groupId, req, response) {
     var payload = {
@@ -13,10 +13,9 @@ function getDeviceListWithDeviceType(groupId, req, response) {
         out.devices = res.response.responseClass[0].resultList[0].Device;
         // console.log('getAllDevices');
         return out;
-    })["catch"](function (err) {
+    }).catch(function (err) {
         console.log(err);
         return err;
     });
 }
 exports.getDeviceListWithDeviceType = getDeviceListWithDeviceType;
-//# sourceMappingURL=getDeviceListWithDeviceType.js.map

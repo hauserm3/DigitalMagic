@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var myPlaylist_1 = require("./myPlaylist");
 var myModal_1 = require("./myModal");
 var MyDevice = (function () {
@@ -75,7 +75,7 @@ var MyDevice = (function () {
             _this.thumbDevice = res;
             _this.$thumb.css({
                 "background-image": "url(" + "'" + res + "'" + ")",
-                "background-size": "auto 100%"
+                "background-size": "auto 100%",
             });
             _this.modal.setModalThumb(_this.thumbDevice);
             console.log('modal.thumbDevice', _this.modal.thumbDevice);
@@ -92,4 +92,3 @@ var MyDevice = (function () {
     return MyDevice;
 }());
 exports.MyDevice = MyDevice;
-//# sourceMappingURL=myDevice.js.map

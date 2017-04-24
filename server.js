@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
 var bodyParser = require("body-parser");
 var getToken_1 = require("./server/com/getToken");
@@ -27,4 +27,3 @@ initApi_1.initApi(app);
 app.listen(port, function () {
     console.log('app listening on port ' + port + '! http://localhost:' + port + '/');
 });
-//# sourceMappingURL=server.js.map

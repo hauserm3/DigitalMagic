@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var myPlaylist_1 = require("./myPlaylist");
 var MyModal = (function () {
     // constructor(){
@@ -17,7 +17,7 @@ var MyModal = (function () {
         // this.setModalDevicePlayingContentInfo();
         this.setModalPlayingContentInfo();
         this.setModalThumb();
-        setInterval(function () { _this.setModalThumb(); _this.setModalPlayingContentInfo(); }, 5000);
+        setInterval(function () { _this.setModalThumb(); _this.setModalPlayingContentInfo(); _this.setModalDevicePlayingContentInfo(); }, 5000);
     }
     MyModal.prototype.init = function () {
         // this.$thumb = $('<div>').addClass('dev_img_thumb').attr('data-toggle', 'modal').attr('data-target','#Modal');
@@ -127,4 +127,3 @@ var MyModal = (function () {
     return MyModal;
 }());
 exports.MyModal = MyModal;
-//# sourceMappingURL=myModal.js.map

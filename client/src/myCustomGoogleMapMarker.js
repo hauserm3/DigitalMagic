@@ -9,7 +9,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var CustomMarker = (function (_super) {
     __extends(CustomMarker, _super);
     function CustomMarker(latlng, map, args, myDevice) {
@@ -145,7 +145,7 @@ var CustomMarker = (function (_super) {
             _this.thumbDevice = res;
             _this.$thumb.css({
                 "background-image": "url(" + "'" + res + "'" + ")",
-                "background-size": "auto 100%"
+                "background-size": "auto 100%",
             });
             // this.modal.setModalThumb(this.thumbDevice);
             // console.log('modal.thumbDevice', this.modal.thumbDevice)
@@ -229,4 +229,3 @@ exports.CustomMarker = CustomMarker;
 // CustomMarker.prototype.getPosition = function () {
 //     return this.latlng;
 // }; 
-//# sourceMappingURL=myCustomGoogleMapMarker.js.map
