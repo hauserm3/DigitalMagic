@@ -4,7 +4,7 @@
 "use strict";
 exports.__esModule = true;
 var myModal_1 = require("./myModal");
-var geInitData_1 = require("./geInitData");
+var initDevicesOnGoogleMap_1 = require("./initDevicesOnGoogleMap");
 var getOrganizations_1 = require("./getOrganizations");
 var initialize = function () {
     var devicesAr = [
@@ -20,7 +20,7 @@ var initialize = function () {
         disableDefaultUI: true
     };
     var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-    geInitData_1.initDevicesOnGoogleMap(map, devicesAr);
+    initDevicesOnGoogleMap_1.initDevicesOnGoogleMap(map, devicesAr);
     myModal_1.initModal();
     getOrganizations_1.getOrganizations($('#OrganizationsList'));
     //            setInterval(function(){getData()},10000);

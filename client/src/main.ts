@@ -6,7 +6,7 @@ import {MyDevice} from './myDevice';
 
 import {initModal, MyModal} from "./myModal";
 import {CustomMarker} from "./myCustomGoogleMapMarker";
-import {initDevicesOnGoogleMap} from "./geInitData";
+import {initDevicesOnGoogleMap} from "./initDevicesOnGoogleMap";
 import {getOrganizations} from "./getOrganizations";
 
 declare var globalDispather$:JQuery;
