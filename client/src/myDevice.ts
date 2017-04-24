@@ -1,12 +1,9 @@
-///<reference path="index.d.ts"/>
-///<reference path="myPlaylist.ts"/>
-///<reference path="myModal.ts"/>
-///<reference path="myCustomGoogleMapMarker.ts"/>
 
+import {MyPlaylist} from './myPlaylist';
 
+import {MyModal} from './myModal';
 
-module magic {
-    export class MyDevice{
+export class MyDevice{
         container = $('#MyContainer');
         $view: JQuery;
         $thumb: JQuery;
@@ -110,4 +107,3 @@ module magic {
             console.error(error);
         }
     }
-}

@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var express = require("express");
 var bodyParser = require("body-parser");
 var getToken_1 = require("./server/com/getToken");

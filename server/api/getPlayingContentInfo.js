@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var getDevicePlayingContent_1 = require("../apiSamsung/getDevicePlayingContent");
 var getContentInfo_1 = require("../apiSamsung/getContentInfo");
 function getPlayingContentInfo(deviceId, req, resp) {
@@ -9,7 +9,7 @@ function getPlayingContentInfo(deviceId, req, resp) {
         });
         // console.log(devicePlayingContent);
         // resp.send(devicePlayingContent);
-    }).catch(function (error) {
+    })["catch"](function (error) {
         resp.send(error);
     });
 }

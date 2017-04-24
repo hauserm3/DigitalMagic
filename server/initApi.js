@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 // import * as querystring from 'querystring';
 // import {error} from "util";
 var getAllDevices_1 = require("./api/getAllDevices");
