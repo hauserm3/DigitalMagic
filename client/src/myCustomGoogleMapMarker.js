@@ -85,6 +85,9 @@ var CustomMarker = (function (_super) {
             .fail(function (err) { return _this.onError(err); });
     };
     CustomMarker.prototype.setDeviceState = function (state) {
+        this.deviceConnection = state;
+        if (!this.$view)
+            return;
         if (state == 'true') {
             this.$view.addClass('active');
             this.getThumbnail();
@@ -92,7 +95,6 @@ var CustomMarker = (function (_super) {
         else {
             this.$view.removeClass('active');
         }
-        this.deviceConnection = state;
         // if (state == 'true') {
         //   this.$view.addClass('active');
         //   this.$thumb.attr('data-toggle', 'modal').attr('data-target', '#Modal-' + this.deviceId);

@@ -99,6 +99,8 @@ declare var globalDispather$: JQuery;
     }
 
     setDeviceState(state: string) {
+      this.deviceConnection = state;
+      if(!this.$view) return;
       if (state == 'true') {
         this.$view.addClass('active');
         this.getThumbnail();
@@ -106,7 +108,7 @@ declare var globalDispather$: JQuery;
       } else {
         this.$view.removeClass('active')
       }
-      this.deviceConnection = state;
+
       // if (state == 'true') {
       //   this.$view.addClass('active');
       //   this.$thumb.attr('data-toggle', 'modal').attr('data-target', '#Modal-' + this.deviceId);

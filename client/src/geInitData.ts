@@ -4,7 +4,9 @@ import LatLng = google.maps.LatLng;
 /**
  * Created by Vlad on 4/23/2017.
  */
-export function getInitData(map, devicesAr) {
+export function getInitData(map, devicesAr):JQueryDeferred<any> {
+  let promise = $.Deferred();
+
 //            $.get('/api/getOrganizationList').done(function (res) {
 //                console.log('getOrganizationList', res);
 //                res.forEach(function (item, i, arr) {
@@ -55,4 +57,6 @@ export function getInitData(map, devicesAr) {
   }).fail(function (error) {
     console.error('error', error);
   });
+
+  return promise
 };

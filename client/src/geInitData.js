@@ -5,6 +5,7 @@ var myCustomGoogleMapMarker_1 = require("./myCustomGoogleMapMarker");
  * Created by Vlad on 4/23/2017.
  */
 function getInitData(map, devicesAr) {
+    var promise = $.Deferred();
     //            $.get('/api/getOrganizationList').done(function (res) {
     //                console.log('getOrganizationList', res);
     //                res.forEach(function (item, i, arr) {
@@ -45,6 +46,7 @@ function getInitData(map, devicesAr) {
     }).fail(function (error) {
         console.error('error', error);
     });
+    return promise;
 }
 exports.getInitData = getInitData;
 ;

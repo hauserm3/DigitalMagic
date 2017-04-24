@@ -4,55 +4,14 @@
 
 import {MyDevice} from './myDevice';
 
-import {MyModal} from "./myModal";
+import {initModal, MyModal} from "./myModal";
 import {CustomMarker} from "./myCustomGoogleMapMarker";
 import {getInitData} from "./geInitData";
 
-declare var globalDispather$:JQuery
-var devices_arr;
+declare var globalDispather$:JQuery;
 
-var modal;
-
-globalDispather$.on('thumbClick', function (evt, obj) {
-  if (modal) modal.$view.remove();
-  modal = new MyModal(obj);
-  $('body').append(modal.$view);
-  modal.$view.fadeIn('fast');
-  modal.$view.on('click', function (evt) {
-    var target = $(evt.target);
-//            console.log('targget', target.hasClass('close'));
-    console.log('targget', target);
-//            if(target.attr('id','Modal') || target.hasClass('close')){
-    if (target.hasClass('close') || target.hasClass('modal')) {
-      modal.$view.fadeOut('fast', function () {
-        modal.$view.remove();
-      });
-    }
-  });
-  console.log('obj', obj);
-});
-//        var positions = [
-//            {
-//                left: '200px',
-//                top: '80px'
-//            },
-//            {
-//                left: '860px',
-//                top: '80px'
-//            },
-//            {
-//                left: '750px',
-//                top: '420px'
-//            },
-//            {
-//                left: '310px',
-//                top: '310px'
-//            }
-//
-//        ];
-
-//        $(document).ready(function () {
 var initialize = function () {
+
   var devicesAr = [
     {Lat: 43.799632, Lng: -79.517201},
     {Lat: 43.793506, Lng: -79.23994},
@@ -71,6 +30,7 @@ var initialize = function () {
 
 
   getInitData(map, devicesAr);
+  initModal();
 //            setInterval(function(){getData()},10000);
 };
 
