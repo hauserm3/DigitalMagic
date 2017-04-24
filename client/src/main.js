@@ -4,7 +4,7 @@
 "use strict";
 exports.__esModule = true;
 var myModal_1 = require("./myModal");
-var myCustomGoogleMapMarker_1 = require("./myCustomGoogleMapMarker");
+var geInitData_1 = require("./geInitData");
 var devices_arr;
 var modal;
 globalDispather$.on('thumbClick', function (evt, obj) {
@@ -47,7 +47,7 @@ globalDispather$.on('thumbClick', function (evt, obj) {
 //        ];
 //        $(document).ready(function () {
 var initialize = function () {
-    var LatLng = [
+    var devicesAr = [
         { Lat: 43.799632, Lng: -79.517201 },
         { Lat: 43.793506, Lng: -79.23994 },
         { Lat: 43.710955, Lng: -79.28338 },
@@ -60,49 +60,7 @@ var initialize = function () {
         disableDefaultUI: true
     };
     var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-    var getData = function () {
-        //            $.get('/api/getOrganizationList').done(function (res) {
-        //                console.log('getOrganizationList', res);
-        //                res.forEach(function (item, i, arr) {
-        //                    $('#OrganizationList>ul').append(
-        //                        $('<li>').append(
-        //                            $('<a>').attr('href', item.group_id[0]).text(item.group_name[0] + ' (id=' + item.group_id[0] + ')')));
-        //                });
-        //            }).fail(function (error) {
-        //                console.error('error', error);
-        //            });
-        $.get('/api/getOrganizationList').done(function (res) {
-            console.log('getOrganizationList', res);
-            res.forEach(function (item, i, arr) {
-                $('.dropdown-menu').append($('<a>').addClass('dropdown-item').attr('href', item.group_id[0]).text(item.group_name[0] + ' (id=' + item.group_id[0] + ')'));
-            });
-        }).fail(function (error) {
-            console.error('error', error);
-        });
-        $.get('/api/getDevices/-1').done(function (res) {
-            devices_arr = res;
-            console.log('getAllDevices ', res);
-            var devices = res.devices;
-            devices.forEach(function (item, i, arr) {
-                //                        var Device = new magic.MyDevice(item);
-                // console.log('Device ', Device.deviceConnection);
-                var myMarker = new myCustomGoogleMapMarker_1.CustomMarker(new google.maps.LatLng(LatLng[i].Lat, LatLng[i].Lng), map, {
-                    marker_id: 'myMarker',
-                    color: 'red'
-                }, item);
-                google.maps.event.addListener(myMarker, 'click', function () {
-                    console.log('arg', arguments);
-                    //                        map.setCenter(RdrMarker.getPosition());
-                    //                        infowindow.setContent(contentStringRdr);
-                    //                        infowindow.open(map,RdrMarker);
-                });
-                //                        Device.createDeviceBlock(positions[i]);
-            });
-        }).fail(function (error) {
-            console.error('error', error);
-        });
-    };
-    getData();
+    geInitData_1.getInitData(map, devicesAr);
     //            setInterval(function(){getData()},10000);
 };
 google.maps.event.addDomListener(window, 'load', initialize);
