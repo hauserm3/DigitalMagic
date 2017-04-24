@@ -5,6 +5,7 @@
 exports.__esModule = true;
 var myModal_1 = require("./myModal");
 var geInitData_1 = require("./geInitData");
+var getOrganizations_1 = require("./getOrganizations");
 var initialize = function () {
     var devicesAr = [
         { Lat: 43.799632, Lng: -79.517201 },
@@ -19,8 +20,9 @@ var initialize = function () {
         disableDefaultUI: true
     };
     var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-    geInitData_1.getInitData(map, devicesAr);
+    geInitData_1.initDevicesOnGoogleMap(map, devicesAr);
     myModal_1.initModal();
+    getOrganizations_1.getOrganizations($('#OrganizationsList'));
     //            setInterval(function(){getData()},10000);
 };
 google.maps.event.addDomListener(window, 'load', initialize);

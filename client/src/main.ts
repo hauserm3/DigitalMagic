@@ -6,7 +6,8 @@ import {MyDevice} from './myDevice';
 
 import {initModal, MyModal} from "./myModal";
 import {CustomMarker} from "./myCustomGoogleMapMarker";
-import {getInitData} from "./geInitData";
+import {initDevicesOnGoogleMap} from "./geInitData";
+import {getOrganizations} from "./getOrganizations";
 
 declare var globalDispather$:JQuery;
 
@@ -29,8 +30,10 @@ var initialize = function () {
   var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
 
-  getInitData(map, devicesAr);
+  initDevicesOnGoogleMap(map, devicesAr);
+
   initModal();
+  getOrganizations($('#OrganizationsList'));
 //            setInterval(function(){getData()},10000);
 };
 

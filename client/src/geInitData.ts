@@ -4,29 +4,8 @@ import LatLng = google.maps.LatLng;
 /**
  * Created by Vlad on 4/23/2017.
  */
-export function getInitData(map, devicesAr):JQueryDeferred<any> {
+export function initDevicesOnGoogleMap(map, devicesAr):JQueryDeferred<any> {
   let promise = $.Deferred();
-
-//            $.get('/api/getOrganizationList').done(function (res) {
-//                console.log('getOrganizationList', res);
-//                res.forEach(function (item, i, arr) {
-//                    $('#OrganizationList>ul').append(
-//                        $('<li>').append(
-//                            $('<a>').attr('href', item.group_id[0]).text(item.group_name[0] + ' (id=' + item.group_id[0] + ')')));
-//                });
-//            }).fail(function (error) {
-//                console.error('error', error);
-//            });
-
-  $.get('/api/getOrganizationList').done(function (res) {
-    console.log('getOrganizationList', res);
-    res.forEach(function (item, i, arr) {
-      $('.dropdown-menu').append(
-        $('<a>').addClass('dropdown-item').attr('href', item.group_id[0]).text(item.group_name[0] + ' (id=' + item.group_id[0] + ')'));
-    });
-  }).fail(function (error) {
-    console.error('error', error);
-  });
 
   $.get('/api/getDevices/-1').done(function (res) {
 
@@ -53,8 +32,10 @@ export function getInitData(map, devicesAr):JQueryDeferred<any> {
       });
 //                        Device.createDeviceBlock(positions[i]);
     });
+    promise.resolve(devices);
 
   }).fail(function (error) {
+    promise.reject(error);
     console.error('error', error);
   });
 
