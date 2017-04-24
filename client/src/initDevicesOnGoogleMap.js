@@ -34,4 +34,4 @@ function initDevicesOnGoogleMap(map, devicesAr) {
 }
 exports.initDevicesOnGoogleMap = initDevicesOnGoogleMap;
 ;
-//# sourceMappingURL=geInitData.js.map
+//# sourceMappingURL=initDevicesOnGoogleMap.js.map
