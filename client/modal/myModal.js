@@ -17,7 +17,11 @@ var MyModal = (function () {
         // this.setModalDevicePlayingContentInfo();
         this.setModalPlayingContentInfo();
         this.setModalThumb();
-        setInterval(function () { _this.setModalThumb(); _this.setModalPlayingContentInfo(); _this.setModalDevicePlayingContentInfo(); }, 5000);
+        setInterval(function () {
+            _this.setModalThumb();
+            _this.setModalPlayingContentInfo();
+            _this.setModalDevicePlayingContentInfo();
+        }, 5000);
     }
     MyModal.prototype.init = function () {
         // this.$thumb = $('<div>').addClass('dev_img_thumb').attr('data-toggle', 'modal').attr('data-target','#Modal');
@@ -127,3 +131,27 @@ var MyModal = (function () {
     return MyModal;
 }());
 exports.MyModal = MyModal;
+var modal;
+function initModal() {
+    console.log(globalDispather$);
+    globalDispather$.on('thumbClick', function (evt, obj) {
+        if (modal)
+            modal.$view.remove();
+        modal = new MyModal(obj);
+        $('body').append(modal.$view);
+        modal.$view.fadeIn('fast');
+        modal.$view.on('click', function (evt) {
+            var target = $(evt.target);
+            //            console.log('targget', target.hasClass('close'));
+            console.log('targget', target);
+            //            if(target.attr('id','Modal') || target.hasClass('close')){
+            if (target.hasClass('close') || target.hasClass('modal')) {
+                modal.$view.fadeOut('fast', function () {
+                    modal.$view.remove();
+                });
+            }
+        });
+        console.log('obj', obj);
+    });
+}
+exports.initModal = initModal;
