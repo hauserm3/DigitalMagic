@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 // import * as querystring from 'querystring';
 // import {error} from "util";
 var getAllDevices_1 = require("./api/getAllDevices");
@@ -9,14 +9,41 @@ var getPlayingContent_1 = require("./api/getPlayingContent");
 var getDeviceConnection_1 = require("./apiSamsung/getDeviceConnection");
 var getOrganizationList_1 = require("./apiSamsung/getOrganizationList");
 var getPlayingContentInfo_1 = require("./api/getPlayingContentInfo");
+var fs = require("fs");
 /**
  * Created by Vlad on 4/15/2017.
  */
+var offline;
+function readFile(filename, resp) {
+    fs.readFile(filename, 'utf8', function (err, data) {
+        if (err)
+            throw err;
+        resp.send(JSON.parse(data));
+        console.log(data);
+    });
+}
+function writeFile(filename, data) {
+    fs.writeFile(filename, JSON.stringify(data), function (err) {
+        if (err)
+            throw err;
+        console.log('The file has been saved!');
+    });
+}
 function initApi(app) {
     //app.get('/api/getAuthToken', getToken);
     app.get('/api/getDevices/:groupId', function (req, resp) {
-        var groupId = req.params.gorupId;
-        getAllDevices_1.getAllDevices(groupId, req, resp);
+        var groupId = req.params.groupId;
+        var filename = 'getDevices_' + groupId + '.json';
+        // if(offline){
+        //   readFile(filename,resp);
+        //   return;
+        // }
+        getAllDevices_1.getAllDevices(groupId).then(function (res) {
+            resp.send(res);
+            writeFile(filename, res);
+        })["catch"](function (error) {
+            resp.send(error);
+        });
     });
     app.get('/api/getDeviceConnection/:deviceId', function (req, resp) {
         var deviceId = req.params.deviceId;
@@ -54,3 +81,4 @@ function initApi(app) {
     });
 }
 exports.initApi = initApi;
+//# sourceMappingURL=initApi.js.map

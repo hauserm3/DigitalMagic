@@ -1,7 +1,6 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var myPlaylist_1 = require("./myPlaylist");
-var myModal_1 = require("./myModal");
 var MyDevice = (function () {
     function MyDevice(device) {
         this.device = device;
@@ -47,7 +46,7 @@ var MyDevice = (function () {
     };
     MyDevice.prototype.getDeviceConnection = function () {
         var _this = this;
-        $.get('getDeviceConnection' + '?deviceId=' + this.deviceId)
+        $.get('api/getDeviceConnection/' + this.deviceId)
             .done(function (res) { return _this.setDeviceState(res); })
             .fail(function (err) { return _this.onError(err); });
     };
@@ -58,7 +57,7 @@ var MyDevice = (function () {
             this.getThumbnail();
             this.playlist = new myPlaylist_1.MyPlaylist(this.device);
             // this.$view.append(this.playlist.$view);
-            this.modal = new myModal_1.MyModal(this.device);
+            // this.modal = new MyModal(this.device); ?????????
             this.$view.append(this.modal.$view);
             this.modal.$modalFooter.append(this.playlist.$view);
         }
@@ -75,7 +74,7 @@ var MyDevice = (function () {
             _this.thumbDevice = res;
             _this.$thumb.css({
                 "background-image": "url(" + "'" + res + "'" + ")",
-                "background-size": "auto 100%",
+                "background-size": "auto 100%"
             });
             _this.modal.setModalThumb(_this.thumbDevice);
             console.log('modal.thumbDevice', _this.modal.thumbDevice);
@@ -92,3 +91,4 @@ var MyDevice = (function () {
     return MyDevice;
 }());
 exports.MyDevice = MyDevice;
+//# sourceMappingURL=myDevice.js.map

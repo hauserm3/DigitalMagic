@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var parseString_1 = require("./parseString");
 var getToken_1 = require("./getToken");
 var Promise = require("bluebird");
@@ -28,7 +28,7 @@ function myPost(data) {
                 'User-Agent': 'Mozilla/5.0'
             }
         };
-        // console.log(payload);
+        console.log('payload', payload);
         var http_req = http.request(options, function (response) {
             response.setEncoding('utf8');
             var rawData = '';
@@ -38,9 +38,10 @@ function myPost(data) {
             });
             response.on('end', function () {
                 parseString_1.parseString(rawData, function (err, result) {
+                    console.log('post res pars', result);
                     resolve(result);
                 });
-                // console.log('rawData', rawData);
+                console.log('post rawData', rawData);
             }).on('error', function (err) {
                 reject(err);
                 console.error('error myPost ', err);
@@ -54,3 +55,4 @@ function myPost(data) {
     });
 }
 exports.myPost = myPost;
+//# sourceMappingURL=myPost.js.map

@@ -15,6 +15,7 @@
     "fs-extra": "^0.30.0",
     "http-proxy": "^1.14.0",
     "http-server": "^0.9.0",
+    "mustache": "^2.3.0",
     "request": "^2.73.0",
     "winston": "^2.3.1",
     "winston-daily-rotate-file": "^1.4.6",
@@ -32,6 +33,7 @@
     "@types/node": "^7.0.13",
     "@types/request": "0.0.42",
     "@types/winston": "^2.3.1",
+    "retyped-mustache-tsd-ambient": "^0.8.2-0",
     "tslint": "^5.0.0",
     "typescript": "^2.2.1"
   }

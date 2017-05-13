@@ -9,7 +9,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var CustomMarker = (function (_super) {
     __extends(CustomMarker, _super);
     function CustomMarker(latlng, map, args, myDevice) {
@@ -21,7 +21,9 @@ var CustomMarker = (function (_super) {
         _this.setMap(map);
         _this.deviceId = myDevice.device_id[0];
         _this.getDeviceConnection();
-        setInterval(function () { _this.getDeviceConnection(); }, 5000);
+        setInterval(function () {
+            _this.getDeviceConnection();
+        }, 5000);
         return _this;
         // console.log('CustomMarker constructor');
     }
@@ -58,11 +60,7 @@ var CustomMarker = (function (_super) {
         var device = this.myDevice;
         this.$thumb = $('<div>').addClass('dev_img_thumb');
         var $view = $('<div>').addClass('device thumbview_wrapper');
-        this.$thumb.on('click', function () {
-            console.log('onClick MODAL');
-            globalDispather$.triggerHandler('thumbClick', device);
-        });
-        var ViewThumb1 = $('<div>').addClass('thumbview_box device_thumb');
+        var ViewThumb1 = $('<div>').addClass('thumbview_box device_thumb').css('cursor', 'pointer');
         var ViewThumb2 = $('<div>').addClass('dev_thumb_img_wrapper');
         // this.$thumb = $('<div>').addClass('dev_img_thumb').attr('data-toggle', 'modal').attr('data-target','#Modal');
         var toolText = "toolTip('Device type: " + device.device_type[0] + "<br>" +
@@ -91,6 +89,10 @@ var CustomMarker = (function (_super) {
         if (state == 'true') {
             this.$view.addClass('active');
             this.getThumbnail();
+            this.$thumb.on('click', function () {
+                console.log('onClick MODAL');
+                globalDispather$.triggerHandler('thumbClick', this.device);
+            });
         }
         else {
             this.$view.removeClass('active');
@@ -147,7 +149,7 @@ var CustomMarker = (function (_super) {
             _this.thumbDevice = res;
             _this.$thumb.css({
                 "background-image": "url(" + "'" + res + "'" + ")",
-                "background-size": "auto 100%",
+                "background-size": "auto 100%"
             });
             // this.modal.setModalThumb(this.thumbDevice);
             // console.log('modal.thumbDevice', this.modal.thumbDevice)
@@ -231,3 +233,4 @@ exports.CustomMarker = CustomMarker;
 // CustomMarker.prototype.getPosition = function () {
 //     return this.latlng;
 // }; 
+//# sourceMappingURL=myCustomGoogleMapMarker.js.map

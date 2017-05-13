@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./libs/b4/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://npmcdn.com/systemjs@0.19.46/dist/system.js"></script>
+    <!--<script src="./libs/system.js"></script>-->
 
 <script>
     System.config({
@@ -16,10 +17,11 @@
 
     <link rel="stylesheet" href="style.css">
     <script src="./libs/jquery-3.1.0.min.js"></script>
+    <script src="./libs/mustache.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
     <script src="./libs/b4/bootstrap.min.js"></script>
     <script src="./src/toolTip.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYZoEBypb8_mF2GLqrvDE1BrdPQ6aSu8Q"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYZoEBypb8_mF2GLqrvDE1BrdPQ6aSu8Q" defer></script>
 
 
 
@@ -50,13 +52,17 @@
 <div class="card card_marker" style="margin-top: 100px">
     <img class="card-img-top" src="./img/vzhuh.jpg" alt="Card image cap">
     <div class="card-block">
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <p class="card-text"><small class="text-muted">Loading...</small></p>
     </div>
 </div>
 
+<div id="Modal" class="modal" role="dialog"></div>
+
 <script>
     var globalDispather$ = $({});
-    System.import('src/main');
+    System.import('src/main').catch(
+        console.error.bind(console)
+    );
 </script>
 
 

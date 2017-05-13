@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var myPost_1 = require("../com/myPost");
 /**
  * Created by Vlad on 4/16/2017.
@@ -11,8 +11,9 @@ function getDeviceThumbnail(deviceId) {
     };
     return myPost_1.myPost(data).then(function (result) {
         return result.response.responseClass[0]._;
-    }).catch(function (error) {
+    })["catch"](function (error) {
         return error;
     });
 }
 exports.getDeviceThumbnail = getDeviceThumbnail;
+//# sourceMappingURL=getDeviceThumbnail.js.map

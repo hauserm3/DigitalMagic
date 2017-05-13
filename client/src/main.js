@@ -2,11 +2,12 @@
  * Created by Vlad on 4/23/2017.
  */
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var myModal_1 = require("./myModal");
+exports.__esModule = true;
+var myModal_1 = require("../modal/myModal");
 var initDevicesOnGoogleMap_1 = require("./initDevicesOnGoogleMap");
 var getOrganizations_1 = require("./getOrganizations");
 var initialize = function () {
+    // console.log('initialize func');
     var devicesAr = [
         { Lat: 43.799632, Lng: -79.517201 },
         { Lat: 43.793506, Lng: -79.23994 },
@@ -25,4 +26,8 @@ var initialize = function () {
     getOrganizations_1.getOrganizations($('#OrganizationsList'));
     //            setInterval(function(){getData()},10000);
 };
-google.maps.event.addDomListener(window, 'load', initialize);
+$(document).ready(function () {
+    initialize();
+    // google.maps.event.addDomListener(window, 'load', initialize);
+});
+//# sourceMappingURL=main.js.map

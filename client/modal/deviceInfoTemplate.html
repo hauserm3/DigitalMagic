@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div>
+    {{#deviceInfo}}
+    <h4 class="modal-title">Device: {{device_name}}</h4>
+    <p class="card-text"><small class="text-muted">screen_size: {{screen_size}}</small></p>
+    <p class="card-text"><small class="text-muted">ip_address: {{ip_address}}</small></p>
+    <p class="card-text"><small class="text-muted">resolution: {{resolution}}</small></p>
+    <button type="button" data-dismiss="modal" class="close">x</button>
+    {{/deviceInfo}}
+</div>

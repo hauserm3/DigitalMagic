@@ -1,9 +1,95 @@
-<div id="template1" >
-    <h1>{{name}}</h1>
-</div>
-<div id="template2" >
-    <div>{{name}}</div>
-</div>
-<div id="template3" >
-    <p><span>{{name}}</span></p>
+<div id="Modal" role="dialog" class="modal" style="display: block;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Device: {{device_name}}</h4>
+                <p class="card-text"><small class="text-muted">Device: {{screen_size}}</small></p>
+                <p class="card-text"><small class="text-muted">Device: {{ip_addres}}</small></p>
+                <p class="card-text"><small class="text-muted">Device: {{resolution}}</small></p>
+                <button type="button" data-dismiss="modal" class="close">x</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group device_modal">
+                    <label>CONTENT</label>
+                    <select class="form-control" multiple="multiple">
+                        <option>content_id: 10EE9918-B94C-414A-B752-16DA1A9B06A5</option>
+                        <option>version_id: 1</option>
+                        <option>content_name: 0bPl1</option>
+                        <option>media_type: IMAGE</option>
+                        <option>creator_id: admin</option>
+                        <option>create_date: 2017-04-16 17:40:58.405575</option>
+                        <option>last_modified_date: 2017-04-16 17:40:58.604182</option>
+                        <option>total_size: 294994</option>
+                        <option>play_time:</option>
+                        <option>resolution: 1920 x 1080</option>
+                        <option>is_deleted: N</option>
+                        <option>is_active: Y</option>
+                        <option>share_flag: 1</option>
+                        <option>content_meta_data:</option>
+                        <option>group_id: 0</option>
+                        <option>group_name: default</option>
+                        <option>main_file_id: 37AF74D0-70E1-467A-AE0D-E8A1A04727C5</option>
+                        <option>thumb_file_id: 4D3B349A-7397-4EDB-A50B-E7BAB461B867</option>
+                        <option>sfi_file_id:</option>
+                        <option>main_file_name: 0bPl1.jpg</option>
+                        <option>thumb_file_path: C:\MagicInfo
+                            Premium\runtime\upload\contents_home\4D3B349A-7397-4EDB-A50B-E7BAB461B867
+                        </option>
+                        <option>thumb_file_name: 0bPl1.jpg.png</option>
+                        <option>is_linear_vwl: N</option>
+                        <option>screen_count: 0</option>
+                        <option>x_count: 0</option>
+                        <option>y_count: 0</option>
+                        <option>x_range: 0</option>
+                        <option>y_range: 0</option>
+                        <option>is_streaming: N</option>
+                        <option>organization_id: 0</option>
+                        <option>org_creator_id:</option>
+                        <option>exist_flv: false</option>
+                        <option>main_file_extension: JPG</option>
+                        <option>content_order: 0</option>
+                        <option>content_duration: 0</option>
+                        <option>vwl_version: 0</option>
+                        <option>multi_vwl: false</option>
+                        <option>device_type_version: 1.0</option>
+                        <option>is_used_template: N</option>
+                        <option>template_page_count: 0</option>
+                        <option>device_type:</option>
+                    </select>
+                </div>
+                <div class="thumbview_box_modal device_thumb_modal">
+                    <div class="dev_thumb_img_wrapper_modal">
+                        <div class="dev_img_thumb_modal"
+                             style="background-size: auto 100%; background-image: url('http://34.196.180.158:7001/MagicInfo/servlet/ContentThumbnail?thumb_id=4D3B349A-7397-4EDB-A50B-E7BAB461B867&amp;thumb_filename=0bPl1.jpg.png');"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="playlist_editer_wrap text-center">
+                    <div class="scrolling">
+                        <ul>
+                            <li>
+                                <div>
+                                    <img src="http://34.196.180.158:7001/MagicInfo/servlet/ContentThumbnail?thumb_id=CE6EF0A0-D2C2-462A-B103-E9A38063FCE5&amp;thumb_filename=0jLNevH.jpg.png_MEDIUM.PNG">
+                                    <p class="name"><span class="name text-overflow">0jLNevH</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="http://34.196.180.158:7001/MagicInfo/servlet/ContentThumbnail?thumb_id=6D83B838-85AF-40BD-99BD-ECB22B745AFB&amp;thumb_filename=0ij7u0R.jpg.png_MEDIUM.PNG">
+                                    <p class="name"><span class="name text-overflow">0ij7u0R</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="http://34.196.180.158:7001/MagicInfo/servlet/ContentThumbnail?thumb_id=1C2B1E06-19B6-48FE-B981-8B6147AC4971&amp;thumb_filename=0I60bta.jpg.png_MEDIUM.PNG">
+                                    <p class="name"><span class="name text-overflow">0I60bta</span></p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

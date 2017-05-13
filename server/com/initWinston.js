@@ -2,7 +2,7 @@
  * Created by Vlad on 2017-04-18.
  */
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var fs = require("fs");
 function initWinston(options) {
     var dir = options.dir || './logs';
@@ -37,3 +37,4 @@ function initWinston(options) {
     }
 }
 exports.initWinston = initWinston;
+//# sourceMappingURL=initWinston.js.map

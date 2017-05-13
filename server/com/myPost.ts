@@ -15,6 +15,7 @@ export function myPost(data){
       return;
     }
 
+
     data.token = token;
    let payload =  querystring.stringify(data);
     let options = {
@@ -30,7 +31,7 @@ export function myPost(data){
       }
     };
 
-    // console.log(payload);
+    console.log('payload', payload);
     let http_req = http.request(options, function(response) {
       response.setEncoding('utf8');
       let rawData = '';
@@ -40,9 +41,10 @@ export function myPost(data){
       });
       response.on('end', function() {
         parseString(rawData, function (err, result) {
+          console.log('post res pars', result);
           resolve(result);
         });
-        // console.log('rawData', rawData);
+        console.log('post rawData', rawData);
       }).on('error', function(err) {
         reject(err);
         console.error('error myPost ',err);

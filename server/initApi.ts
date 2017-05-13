@@ -12,16 +12,46 @@ import {getPlayingContent} from "./api/getPlayingContent";
 import {getDeviceConnection} from "./apiSamsung/getDeviceConnection";
 import {getOrganizationList} from "./apiSamsung/getOrganizationList";
 import {getPlayingContentInfo} from "./api/getPlayingContentInfo";
+import * as fs from "fs";
 /**
  * Created by Vlad on 4/15/2017.
  */
+
+let offline: boolean;
+
+function readFile(filename, resp){
+  fs.readFile(filename, 'utf8', (err, data) => {
+    if (err) throw err;
+    resp.send(JSON.parse(data));
+    console.log(data);
+  });
+}
+
+function writeFile(filename, data){
+  fs.writeFile(filename, JSON.stringify(data), (err) => {
+    if (err) throw err;
+    console.log('The file has been saved!');
+  });
+}
 
 export function initApi(app) {
   //app.get('/api/getAuthToken', getToken);
 
   app.get('/api/getDevices/:groupId', function (req, resp) {
-    let groupId = req.params.gorupId;
-    getAllDevices(groupId, req, resp);
+    let groupId = req.params.groupId;
+    let filename = 'getDevices_' + groupId + '.json';
+
+    // if(offline){
+    //   readFile(filename,resp);
+    //   return;
+    // }
+
+    getAllDevices(groupId).then(function (res) {
+      resp.send(res);
+      writeFile(filename,res);
+    }).catch(function (error) {
+      resp.send(error);
+    });
   });
 
   app.get('/api/getDeviceConnection/:deviceId', function (req, resp) {

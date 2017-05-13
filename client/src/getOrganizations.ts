@@ -4,7 +4,7 @@
 export function getOrganizations($view:JQuery){
 
  return $.get('/api/getOrganizationList').then(function (res) {
-    console.log('getOrganizationList', res);
+    // console.log('getOrganizationList', res);
 
     res.forEach(function (item, i, arr) {
       $view.append(

@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var MyPlaylist = (function () {
     function MyPlaylist(device) {
         this.device = device;
@@ -86,3 +86,4 @@ var MyPlaylist = (function () {
     return MyPlaylist;
 }());
 exports.MyPlaylist = MyPlaylist;
+//# sourceMappingURL=myPlaylist.js.map

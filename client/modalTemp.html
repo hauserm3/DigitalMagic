@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ModalTemp</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./libs/b4/bootstrap.min.css">
+    <script src="./libs/jquery-3.1.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+    <script src="./libs/b4/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div id="Modal" class="modal" role="dialog" style="display: block">
+
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" id="deviceInfo">
+                <!--<div>-->
+                    <div>
+                        <h4 class="modal-title">Device: {{device_name}}</h4>
+                    </div>
+                    <div class="row">
+                        <p class="card-text"><small class="text-muted">screen_size: {{screen_size}}</small></p>
+                    </div>
+                    <div class="row">
+                        <p class="card-text"><small class="text-muted">ip_address: {{ip_address}}</small></p>
+                    </div>
+                    <div class="row">
+                        <p class="card-text"><small class="text-muted">resolution: {{resolution}}</small></p>
+                    </div>
+                        <button type="button" data-dismiss="modal" class="close">x</button>
+                <!--</div>-->
+            </div>
+            <div class="modal-body">
+                <div class="form-group device_modal">
+                    <label>CONTENT</label>
+                    <select class="form-control" multiple="multiple" id="contentInfo">
+                        <div>
+                            <option>{contentKey1}: {contentVal1}</option>
+                            <option>{contentKey2}: {contentVal2}</option>
+                            <option>{contentKey3}: {contentVal3}</option>
+                        </div>
+                    </select>
+                </div>
+                <div class="thumbview_box_modal device_thumb_modal">
+                    <div class="dev_thumb_img_wrapper_modal">
+                        <div class="dev_img_thumb_modal"
+                             style="background-size: auto 100%; background-image: url('{{thumbDevice}}');"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="playlist_editer_wrap text-center">
+                    <div class="scrolling">
+                        <ul id="playlist">
+                            <li>
+                                <div>
+                                    <img src="http://34.196.180.158:7001/MagicInfo/servlet/ContentThumbnail?thumb_id=CE6EF0A0-D2C2-462A-B103-E9A38063FCE5&amp;thumb_filename=0jLNevH.jpg.png_MEDIUM.PNG">
+                                    <p class="name"><span class="name text-overflow">0jLNevH</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="http://34.196.180.158:7001/MagicInfo/servlet/ContentThumbnail?thumb_id=6D83B838-85AF-40BD-99BD-ECB22B745AFB&amp;thumb_filename=0ij7u0R.jpg.png_MEDIUM.PNG">
+                                    <p class="name"><span class="name text-overflow">0ij7u0R</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="http://34.196.180.158:7001/MagicInfo/servlet/ContentThumbnail?thumb_id=1C2B1E06-19B6-48FE-B981-8B6147AC4971&amp;thumb_filename=0I60bta.jpg.png_MEDIUM.PNG">
+                                    <p class="name"><span class="name text-overflow">0I60bta</span></p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

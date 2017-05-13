@@ -2,7 +2,7 @@
 <html>
 <head>
 
-    <title>DigitalMagic2</title>
+    <title>Mustache</title>
 
     <script src="./libs/jquery-3.1.0.min.js"></script>
     <script src="./libs/mustache.js"></script>
@@ -21,9 +21,9 @@
     var output = Mustache.render("{{title}} spends {{calc}}", view);
 
     console.log('output', output);
-///////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////
 
-    var  data = {
+    var data = {
         "header": "Colors",
         "items": [
             {"name": "red", "first": true, "url": "#Red"},
@@ -34,18 +34,47 @@
     };
 
     var template = '<h1>{{header}}</h1>' +
-                    '{{#bug}}{{/bug}}' +
-                    '{{#items}}' +
-                    '{{#first}}<li><strong>{{name}}</strong></li>{{/first}}' +
-                    '{{#link}}<li><a href="{{url}}">{{name}}</a></li>{{/link}}{{/items}}' +
-                    '{{#empty}}<p>The list is empty.</p>{{/empty}}';
+        '{{#bug}}{{/bug}}' +
+        '{{#items}}' +
+        '{{#first}}<li><strong>{{name}}</strong></li>{{/first}}' +
+        '{{#link}}<li><a href="{{url}}">{{name}}</a></li>{{/link}}{{/items}}' +
+        '{{#empty}}<p>The list is empty.</p>{{/empty}}';
     console.log(Mustache.render(template, data));
 </script>
 
 <!--   ---------------------------    -->
 <div id="target">Loading...</div>
-<script id="template" type="x-tmpl-mustache">
-Hello {{ name }}!
+<script id="templatModal" type="text/html">
+<div id="Modal" role="dialog" class="modal" style="display: block;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Device: {{device_name}}</h4>
+                <p class="card-text"><small class="text-muted">Device: {{screen_size}}</small></p>
+                <p class="card-text"><small class="text-muted">Device: {{ip_addres}}</small></p>
+                <p class="card-text"><small class="text-muted">Device: {{resolution}}</small></p>
+                <button type="button" data-dismiss="modal" class="close">x</button>
+            </div>
+            <div class="modal-body">
+                <div class="thumbview_box_modal device_thumb_modal">
+                    <div class="dev_thumb_img_wrapper_modal">
+                        <div class="dev_img_thumb_modal"
+                             style="background-size: auto 100%; background-image: url('http://34.196.180.158:7001/MagicInfo/servlet/ContentThumbnail?thumb_id=4D3B349A-7397-4EDB-A50B-E7BAB461B867&amp;thumb_filename=0bPl1.jpg.png');"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="playlist_editer_wrap text-center">
+                    <div class="scrolling">
+                        <ul id="playList">
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </script>
 
 <script>
@@ -63,40 +92,210 @@ Hello {{ name }}!
     $(document).ready(loadUser());
 </script>
 
+
+<script>
+    var templateModal = '<div id="Modal" role="dialog" class="modal">{{header}}</div>' +
+                            '<div class="modal-dialog modal-lg" role="document">' +
+                                '<div class="modal-content">' +
+                                    '<div class="modal-header">' +
+        '{{#bug}}{{/bug}}' +
+        '{{#items}}' +
+        '{{#first}}<li><strong>{{name}}</strong></li>{{/first}}' +
+        '{{#link}}<li><a href="{{url}}">{{name}}</a></li>{{/link}}{{/items}}' +
+        '{{#empty}}<p>The list is empty.</p>{{/empty}}';
+    console.log(Mustache.render(template, data));
+</script>
+
+
+<div id="Modal" role="dialog" class="modal" style="display: block;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Device: DB22D_HT_LAB</h4>
+                <button type="button" data-dismiss="modal" class="close">x</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group device_modal">
+                    <label>DEVICE</label>
+                    <select class="form-control" multiple="multiple" style="height: 150px;">
+                        <option>device_id: e4-7d-bd-7a-74-0f</option>
+                        <option>device_model_code: 79</option>
+                        <option>device_model_name: DB22D</option>
+                        <option>device_name: DB22D_HT_LAB</option>
+                        <option>serial_decimal: 03AMHCJHB00079R</option>
+                        <option>screen_size: 22</option>
+                        <option>firmware_version: B2B-EP-MIP-4602-221</option>
+                        <option>application_version: T-GFSLDAKUC 1038.0;T-GFSLDWWS2 1028</option>
+                        <option>rule_version: 0.1.1</option>
+                        <option>os_image_version: Linux;3.8.13;</option>
+                        <option>mac_address: e4-7d-bd-7a-74-0f</option>
+                        <option>ip_address: 192.168.0.43</option>
+                        <option>location: Back Display</option>
+                        <option>is_approved: true</option>
+                        <option>tunneling_server: 0.0.0.0</option>
+                        <option>ewf_state: false</option>
+                        <option>resolution: 1920*1080</option>
+                        <option>device_type: SPLAYER</option>
+                        <option>device_type_version: 2.0</option>
+                        <option>create_date: 2017-04-06 23:12:04.391475</option>
+                        <option>group_name: default</option>
+                        <option>group_id: 69</option>
+                        <option>captured_file_name: e4-7d-bd-7a-74-0f.jpg</option>
+                        <option>captured_date: 2017-04-24 17:32:36.803547</option>
+                        <option>is_overwrite_device_name: false</option>
+                    </select>
+                </div>
+                <div class="form-group device_modal">
+                    <label>CONTENT</label>
+                    <select class="form-control" multiple="multiple" style="height: 150px;">
+                        <option>content_id: 10EE9918-B94C-414A-B752-16DA1A9B06A5</option>
+                        <option>version_id: 1</option>
+                        <option>content_name: 0bPl1</option>
+                        <option>media_type: IMAGE</option>
+                        <option>creator_id: admin</option>
+                        <option>create_date: 2017-04-16 17:40:58.405575</option>
+                        <option>last_modified_date: 2017-04-16 17:40:58.604182</option>
+                        <option>total_size: 294994</option>
+                        <option>play_time:</option>
+                        <option>resolution: 1920 x 1080</option>
+                        <option>is_deleted: N</option>
+                        <option>is_active: Y</option>
+                        <option>share_flag: 1</option>
+                        <option>content_meta_data:</option>
+                        <option>group_id: 0</option>
+                        <option>group_name: default</option>
+                        <option>main_file_id: 37AF74D0-70E1-467A-AE0D-E8A1A04727C5</option>
+                        <option>thumb_file_id: 4D3B349A-7397-4EDB-A50B-E7BAB461B867</option>
+                        <option>sfi_file_id:</option>
+                        <option>main_file_name: 0bPl1.jpg</option>
+                        <option>thumb_file_path: C:\MagicInfo
+                            Premium\runtime\upload\contents_home\4D3B349A-7397-4EDB-A50B-E7BAB461B867
+                        </option>
+                        <option>thumb_file_name: 0bPl1.jpg.png</option>
+                        <option>is_linear_vwl: N</option>
+                        <option>screen_count: 0</option>
+                        <option>x_count: 0</option>
+                        <option>y_count: 0</option>
+                        <option>x_range: 0</option>
+                        <option>y_range: 0</option>
+                        <option>is_streaming: N</option>
+                        <option>organization_id: 0</option>
+                        <option>org_creator_id:</option>
+                        <option>exist_flv: false</option>
+                        <option>main_file_extension: JPG</option>
+                        <option>content_order: 0</option>
+                        <option>content_duration: 0</option>
+                        <option>vwl_version: 0</option>
+                        <option>multi_vwl: false</option>
+                        <option>device_type_version: 1.0</option>
+                        <option>is_used_template: N</option>
+                        <option>template_page_count: 0</option>
+                        <option>device_type:</option>
+                    </select>
+                </div>
+                <div class="thumbview_box_modal device_thumb_modal">
+                    <div class="dev_thumb_img_wrapper_modal">
+                        <div class="dev_img_thumb_modal"
+                             style="background-size: auto 100%; background-image: url('http://34.196.180.158:7001/MagicInfo/servlet/ContentThumbnail?thumb_id=4D3B349A-7397-4EDB-A50B-E7BAB461B867&amp;thumb_filename=0bPl1.jpg.png');"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="playlist_editer_wrap text-center">
+                    <div class="scrolling">
+                        <ul>
+                            <li>
+                                <div>
+                                    <img src="http://34.196.180.158:7001/MagicInfo/servlet/ContentThumbnail?thumb_id=CE6EF0A0-D2C2-462A-B103-E9A38063FCE5&amp;thumb_filename=0jLNevH.jpg.png_MEDIUM.PNG">
+                                    <p class="name"><span class="name text-overflow">0jLNevH</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="http://34.196.180.158:7001/MagicInfo/servlet/ContentThumbnail?thumb_id=6D83B838-85AF-40BD-99BD-ECB22B745AFB&amp;thumb_filename=0ij7u0R.jpg.png_MEDIUM.PNG">
+                                    <p class="name"><span class="name text-overflow">0ij7u0R</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="http://34.196.180.158:7001/MagicInfo/servlet/ContentThumbnail?thumb_id=1C2B1E06-19B6-48FE-B981-8B6147AC4971&amp;thumb_filename=0I60bta.jpg.png_MEDIUM.PNG">
+                                    <p class="name"><span class="name text-overflow">0I60bta</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="http://34.196.180.158:7001/MagicInfo/servlet/ContentThumbnail?thumb_id=AC2ABCB2-FCD7-49D5-9861-402F13E3EBC0&amp;thumb_filename=JAN-FEB-26-Video_Game_04.mp4.png_MEDIUM.PNG">
+                                    <p class="name"><span class="name text-overflow">JAN-FEB-26-Video_Game_04</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="http://34.196.180.158:7001/MagicInfo/servlet/ContentThumbnail?thumb_id=84F07403-DA8E-4CCE-ADA1-7F1A70BBE7E1&amp;thumb_filename=0gR94u0.jpg.png_MEDIUM.PNG">
+                                    <p class="name"><span class="name text-overflow">0gR94u0</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="http://34.196.180.158:7001/MagicInfo/servlet/ContentThumbnail?thumb_id=A3467A1C-7F07-49BA-9D52-D5AD33B61C24&amp;thumb_filename=0GkcqA1.jpg.png_MEDIUM.PNG">
+                                    <p class="name"><span class="name text-overflow">0GkcqA1</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="http://34.196.180.158:7001/MagicInfo/servlet/ContentThumbnail?thumb_id=08503280-7850-45B1-8AAB-E64245E50E30&amp;thumb_filename=0b3dVLt.jpg.png_MEDIUM.PNG">
+                                    <p class="name"><span class="name text-overflow">0b3dVLt</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="http://34.196.180.158:7001/MagicInfo/servlet/ContentThumbnail?thumb_id=55A1E17E-D43D-4EC0-8694-8211E96F5D8B&amp;thumb_filename=0bjaIWP.jpg.png_MEDIUM.PNG">
+                                    <p class="name"><span class="name text-overflow">0bjaIWP</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="http://34.196.180.158:7001/MagicInfo/servlet/ContentThumbnail?thumb_id=4D3B349A-7397-4EDB-A50B-E7BAB461B867&amp;thumb_filename=0bPl1.jpg.png_MEDIUM.PNG">
+                                    <p class="name"><span class="name text-overflow">0bPl1</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="http://34.196.180.158:7001/MagicInfo/servlet/ContentThumbnail?thumb_id=18B8D82A-CC03-4AF3-85FA-EF05A38A12C0&amp;thumb_filename=0LcMwiR.jpg.png_MEDIUM.PNG">
+                                    <p class="name"><span class="name text-overflow">0LcMwiR</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="http://34.196.180.158:7001/MagicInfo/servlet/ContentThumbnail?thumb_id=1EE592B5-5B05-4BDE-9CDB-AEE6A8553D82&amp;thumb_filename=0jMFnzd.jpg.png_MEDIUM.PNG">
+                                    <p class="name"><span class="name text-overflow">0jMFnzd</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="http://34.196.180.158:7001/MagicInfo/servlet/ContentThumbnail?thumb_id=E55D20F5-099E-49B1-AFD6-7D7AA0944752&amp;thumb_filename=5.jpg.png_MEDIUM.PNG">
+                                    <p class="name"><span class="name text-overflow">5</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="http://34.196.180.158:7001/MagicInfo/servlet/ContentThumbnail?thumb_id=60886F7D-4341-4E98-888A-0CEF13906207&amp;thumb_filename=4.jpg.png_MEDIUM.PNG">
+                                    <p class="name"><span class="name text-overflow">4</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="http://34.196.180.158:7001/MagicInfo/servlet/ContentThumbnail?thumb_id=FFCF60CE-F125-45F1-89D4-EE5F1CED78FB&amp;thumb_filename=3.jpg.png_MEDIUM.PNG">
+                                    <p class="name"><span class="name text-overflow">3</span></p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 </body>
 </html>
-
-<!--<!doctype html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-    <!--<title>Mustache.js External Method</title>-->
-    <!--<script src="./libs/jquery-3.1.0.min.js" ></script>-->
-    <!--<script src="./libs/mustache.js" ></script>-->
-    <!--<script>-->
-        <!--$(document).ready(function(){-->
-            <!--var view = {-->
-                <!--name : "Joe",-->
-                <!--occupation : "Web Developer"-->
-            <!--};-->
-            <!--$("#templates").load("template.html #template1",function(){-->
-                <!--var template = document.getElementById('template1').innerHTML;-->
-                <!--var output = Mustache.render(template, view);-->
-                <!--$("#person").html(output);-->
-            <!--});-->
-        <!--});-->
-    <!--</script>-->
-<!--</head>-->
-<!--<body>-->
-<!--<p id="person"></p>-->
-<!--<div id="templates" style="display: none;"></div>-->
-<!--<div id="template1" >-->
-    <!--<h1>{{name}}</h1>-->
-<!--</div>-->
-<!--<div id="template2" >-->
-    <!--<div>{{name}}</div>-->
-<!--</div>-->
-<!--<div id="template3" >-->
-    <!--<p><span>{{name}}</span></p>-->
-<!--</div>-->
-<!--</body>-->
-<!--</html>-->

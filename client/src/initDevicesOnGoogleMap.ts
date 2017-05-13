@@ -11,7 +11,7 @@ export function initDevicesOnGoogleMap(map, devicesAr):JQueryDeferred<any> {
 
     //devices_arr = res;
     console.log('getAllDevices ', res);
-    var devices = res.devices;
+    let devices = res.devices;
     devices.forEach(function (item, i, arr) {
 //                        var Device = new magic.MyDevice(item);
       // console.log('Device ', Device.deviceConnection);
